@@ -1,12 +1,5 @@
-﻿using System;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-using TiledSharp;
-
-using MonoMyst.TileSystem;
 
 namespace MonoMyst
 {
@@ -15,11 +8,6 @@ namespace MonoMyst
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private TmxMap map;
-        private Texture2D tileset;
-
-        private TileSystem.TileSystem tileSystem;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -27,6 +15,7 @@ namespace MonoMyst
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
+            graphics.ApplyChanges ();
         }
 
         protected override void Initialize()
@@ -36,11 +25,7 @@ namespace MonoMyst
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            map = new TmxMap ("Content/LevelSet1.tmx");
-            tileset = Content.Load<Texture2D> ("Grass");
-            tileSystem = new TileSystem.TileSystem (map, tileset);
+            spriteBatch = new SpriteBatch (GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
@@ -51,12 +36,6 @@ namespace MonoMyst
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            spriteBatch.Begin ();
-
-            tileSystem.Draw (spriteBatch);
-
-            spriteBatch.End ();
 
             base.Draw(gameTime);
         }
