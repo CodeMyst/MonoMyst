@@ -1,14 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using MonoMyst.ECS;
+
 namespace MonoMyst
 {
-    public class Game1 : Game
+    public class Core : Game
     {
+        public static Scene Scene;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        public Game1()
+        public Core()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -21,6 +25,10 @@ namespace MonoMyst
         protected override void Initialize()
         {
             base.Initialize();
+
+            Scene = new Scene ();
+
+            Scene.Initialize ();
         }
 
         protected override void LoadContent()
@@ -31,11 +39,20 @@ namespace MonoMyst
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
+            Scene.Update (deltaTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
+            spriteBatch.Begin ();
+
+            Scene.Draw (spriteBatch);
+
+            spriteBatch.End ();
 
             base.Draw(gameTime);
         }

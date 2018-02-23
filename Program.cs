@@ -7,7 +7,7 @@ namespace MonoMyst
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (Core game = new Core())
                 game.Run();
         }
     }
