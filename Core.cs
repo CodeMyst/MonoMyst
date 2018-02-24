@@ -7,7 +7,7 @@ namespace MonoMyst
 {
     public class Core : Game
     {
-        public static Scene Scene;
+        public static Scene Scene { get; private set; }
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -25,10 +25,6 @@ namespace MonoMyst
         protected override void Initialize()
         {
             base.Initialize();
-
-            Scene = new Scene ();
-
-            Scene.Initialize ();
         }
 
         protected override void LoadContent()
@@ -46,7 +42,7 @@ namespace MonoMyst
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Scene.ClearColor);
 
             spriteBatch.Begin ();
 
@@ -55,6 +51,13 @@ namespace MonoMyst
             spriteBatch.End ();
 
             base.Draw(gameTime);
+        }
+
+        protected void NextScene (Scene scene)
+        {
+            Scene = scene;
+            Scene.Game = this;
+            Scene.Initialize ();
         }
     }
 }
