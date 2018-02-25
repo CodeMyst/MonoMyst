@@ -1,18 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+
+using MonoMyst.Core.ECS;
 
 namespace MonoMyst.Core
 {
     public class MonoMystGame : Game
     {
+        public static Scene Scene { get; private set; }
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
         public MonoMystGame ()
         {
             graphics = new GraphicsDeviceManager (this);
-            Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
@@ -28,17 +30,30 @@ namespace MonoMyst.Core
 
         protected override void Update (GameTime gameTime)
         {
-            if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState ().IsKeyDown (Keys.Escape))
-                Exit ();
-
             base.Update (gameTime);
+
+            float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
+            Scene.Update (deltaTime);
         }
 
         protected override void Draw (GameTime gameTime)
         {
             GraphicsDevice.Clear (Color.CornflowerBlue);
 
+            spriteBatch.Begin ();
+
+            Scene.Draw (spriteBatch);
+
+            spriteBatch.End ();
+
             base.Draw (gameTime);
+        }
+
+        public void NextScene (Scene scene)
+        {
+            Scene = scene;
+            Scene.Game = this;
+            Scene.Initialize ();
         }
     }
 }
