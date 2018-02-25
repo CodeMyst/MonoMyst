@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <MonoGameContentReference Include="**\*.mgcb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Content.Builder" Version="3.7.0.4" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MonoMyst.Core\MonoMyst.Core.csproj" />
+  </ItemGroup>
+
+</Project>
