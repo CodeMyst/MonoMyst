@@ -38,7 +38,7 @@ namespace MonoMyst.Core
 
         protected override void Draw (GameTime gameTime)
         {
-            GraphicsDevice.Clear (Color.CornflowerBlue);
+            GraphicsDevice.Clear (Scene.ClearColor);
 
             spriteBatch.Begin ();
 
