@@ -18,7 +18,7 @@ namespace MonoMyst.Core.ECS
             Name = name;
         }
 
-        public T AddComponent<T> () where T : Component, new()
+        public T AddComponent<T> () where T : Component, new ()
         {
             T component = new T
             {
@@ -26,6 +26,11 @@ namespace MonoMyst.Core.ECS
             };
             components.Add (component);
             return component;
+        }
+
+        public T GetComponent<T> () where T : Component, new ()
+        {
+            return components.Find (s => s.GetType () == typeof (T)) as T;
         }
 
         public virtual void Update (float deltaTime)

@@ -5,6 +5,7 @@ using MonoMyst.Core;
 using MonoMyst.Core.ECS;
 
 using MonoMyst.Engine.UI;
+using System;
 
 namespace MonoMyst.Sandbox
 {
@@ -41,6 +42,8 @@ namespace MonoMyst.Sandbox
                 text = count.ToString ();
                 buttonComponent.Size = new Point ((int) font.MeasureString (text).X, (int) font.MeasureString (text).Y);
                 textComponent.Text = text;
+
+                Console.WriteLine (button.GetComponent<ButtonComponent> ().Color);
             };
         }
     }
