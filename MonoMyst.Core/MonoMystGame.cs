@@ -9,12 +9,12 @@ namespace MonoMyst.Core
     {
         public static Scene Scene { get; private set; }
 
-        private GraphicsDeviceManager graphics;
+        protected GraphicsDeviceManager GraphicsDeviceManager;
         private SpriteBatch spriteBatch;
 
         public MonoMystGame ()
         {
-            graphics = new GraphicsDeviceManager (this);
+            GraphicsDeviceManager = new GraphicsDeviceManager (this);
             IsMouseVisible = true;
         }
 
@@ -52,7 +52,6 @@ namespace MonoMyst.Core
         public void NextScene (Scene scene)
         {
             Scene = scene;
-            Scene.Game = this;
             Scene.Initialize ();
         }
     }

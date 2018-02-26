@@ -8,13 +8,20 @@ namespace MonoMyst.Core.ECS
 {
     public class Scene
     {
-        public MonoMystGame Game;
+        public MonoMystGame Game { get; }
+        public GraphicsDevice GraphicsDevice { get; }
 
         public Color ClearColor = new Color (29, 29, 29);
 
         protected ContentManager Content;
 
         private List<Entity> entities = new List<Entity> ();
+
+        public Scene (MonoMystGame game, GraphicsDevice graphicsDevice)
+        {
+            Game = game;
+            GraphicsDevice = graphicsDevice;
+        }
 
         public virtual void Initialize ()
         {
