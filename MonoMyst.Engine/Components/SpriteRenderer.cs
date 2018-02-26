@@ -9,7 +9,7 @@ namespace MonoMyst.Engine.Components
     {
         public Texture2D Sprite;
 
-        public Vector2 Size = Vector2.One;
+        public Point Size = new Point (1, 1);
 
         public Color Color = Color.White;
 
@@ -18,7 +18,7 @@ namespace MonoMyst.Engine.Components
             if (Sprite == null)
                 return;
 
-            spriteBatch.Draw (Sprite, new Rectangle ((int) Entity.Position.X, (int) Entity.Position.Y, (int) Size.X, (int) Size.Y), null, Color);
+            spriteBatch.Draw (Sprite, new Rectangle (Entity.Position, Size), null, Color);
         }
     }
 }
