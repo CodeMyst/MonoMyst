@@ -9,14 +9,16 @@ namespace MonoMyst.Engine.Components
     {
         public Texture2D Sprite;
 
-        public Vector2 Size;
+        public Vector2 Size = Vector2.One;
+
+        public Color Color = Color.White;
 
         public override void Draw (SpriteBatch spriteBatch)
         {
             if (Sprite == null)
                 return;
 
-            spriteBatch.Draw (Sprite, new Rectangle ((int) Entity.Position.X, (int) Entity.Position.Y, (int) Size.X, (int) Size.Y), null, Color.White);
+            spriteBatch.Draw (Sprite, new Rectangle ((int) Entity.Position.X, (int) Entity.Position.Y, (int) Size.X, (int) Size.Y), null, Color);
         }
     }
 }
