@@ -16,8 +16,4 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MonoMyst.Utilities\MonoMyst.Utilities.csproj" />
-  </ItemGroup>
-
 </Project>

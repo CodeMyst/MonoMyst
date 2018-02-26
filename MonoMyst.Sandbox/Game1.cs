@@ -9,7 +9,7 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            Scene scene = new Scene (this, GraphicsDeviceManager.GraphicsDevice);
+            Scene scene = new MainScene (this, GraphicsDeviceManager.GraphicsDevice);
             NextScene (scene);
         }
     }
