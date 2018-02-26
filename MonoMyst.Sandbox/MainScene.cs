@@ -18,10 +18,30 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            Entity button = CreateEntity ("Button");
-            Button buttonComponent = button.AddComponent<Button> ();
+            SpriteFont font = Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular");
+            string text = "This is a test text component";
+
+            Entity button = CreateEntity ("TextTest");
+            button.Position = new Point (10, 10);
+
+            ButtonComponent buttonComponent = button.AddComponent<ButtonComponent> ();
             buttonComponent.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
-            buttonComponent.Size = new Point (100, 100);
+            buttonComponent.Size = new Point ((int) font.MeasureString (text).X, (int) font.MeasureString (text).Y);
+            buttonComponent.Color = Color.DarkOrange;
+
+            TextComponent textComponent = button.AddComponent<TextComponent> ();
+            textComponent.Text = text;
+            textComponent.Font = font;
+
+            int count = 0;
+
+            buttonComponent.OnPressed += () =>
+            {
+                count++;
+                text = count.ToString ();
+                buttonComponent.Size = new Point ((int) font.MeasureString (text).X, (int) font.MeasureString (text).Y);
+                textComponent.Text = text;
+            };
         }
     }
 }

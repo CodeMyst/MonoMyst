@@ -7,7 +7,7 @@ using MonoMyst.Engine.Components;
 
 namespace MonoMyst.Engine.UI
 {
-    public class Button : SpriteComponent
+    public class ButtonComponent : SpriteComponent
     {
         public event Action OnHovered;
         public event Action OnPressed;
