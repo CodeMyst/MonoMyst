@@ -5,7 +5,7 @@ using MonoMyst.Core.ECS;
 
 namespace MonoMyst.Engine.Components
 {
-    public class SpriteRenderer : Component
+    public class SpriteComponent : Component
     {
         public Texture2D Sprite;
 
