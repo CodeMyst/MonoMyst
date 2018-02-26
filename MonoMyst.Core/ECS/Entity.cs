@@ -9,7 +9,7 @@ namespace MonoMyst.Core.ECS
     {
         public string Name { get; }
 
-        public Vector2 Position;
+        public Point Position;
 
         private List<Component> components = new List<Component> ();
 
