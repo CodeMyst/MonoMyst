@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Core;
 using MonoMyst.Core.ECS;
 
 using MonoMyst.Engine.UI;
-using System;
 
 namespace MonoMyst.Sandbox
 {
@@ -22,7 +23,7 @@ namespace MonoMyst.Sandbox
             SpriteFont font = Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular");
             string text = "This is a test text component";
 
-            Entity button = CreateEntity ("TextTest");
+            Entity button = Entity.CreateSceneEntity ("TextTest");
             button.Position = new Point (10, 10);
 
             ButtonComponent buttonComponent = button.AddComponent<ButtonComponent> ();

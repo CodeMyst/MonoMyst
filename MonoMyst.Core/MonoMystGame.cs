@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Core.ECS;
 
@@ -42,15 +42,6 @@ namespace MonoMyst.Core
 
             float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
             Scene.Update (deltaTime);
-
-            if (Keyboard.GetState ().IsKeyDown (Keys.Left))
-                Camera.Position.X -= 1f;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Right))
-                Camera.Position.X += 1f;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Up))
-                Camera.Position.Y -= 1f;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Down))
-                Camera.Position.Y += 1f;
         }
 
         protected override void Draw (GameTime gameTime)
@@ -69,6 +60,7 @@ namespace MonoMyst.Core
         public void NextScene (Scene scene)
         {
             Scene = scene;
+            Scene.Current = Scene;
             Scene.Initialize ();
         }
     }

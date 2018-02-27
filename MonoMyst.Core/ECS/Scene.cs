@@ -8,6 +8,8 @@ namespace MonoMyst.Core.ECS
 {
     public class Scene
     {
+        public static Scene Current { get; internal set; }
+
         public MonoMystGame Game { get; }
         public GraphicsDevice GraphicsDevice { get; }
 
@@ -43,11 +45,9 @@ namespace MonoMyst.Core.ECS
                 e.Draw (spriteBatch);
         }
 
-        protected Entity CreateEntity (string name)
+        internal void RegisterEntity (Entity e)
         {
-            Entity e = new Entity (name);
             entities.Add (e);
-            return e;
         }
     }
 }

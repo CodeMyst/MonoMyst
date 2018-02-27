@@ -7,15 +7,34 @@ namespace MonoMyst.Core.ECS
 {
     public class Entity
     {
-        public string Name { get; }
+        public string Name { get; set; }
 
         public Point Position;
 
         private List<Component> components = new List<Component> ();
 
-        public Entity (string name)
+        private Entity ()
         {
-            Name = name;
+        }
+
+        public static Entity CreateSceneEntity (string name, Scene scene)
+        {
+            Entity e = new Entity
+            {
+                Name = name
+            };
+            scene.RegisterEntity (e);
+            return e;
+        }
+
+        public static Entity CreateSceneEntity (string name)
+        {
+            Entity e = new Entity
+            {
+                Name = name
+            };
+            Scene.Current.RegisterEntity (e);
+            return e;
         }
 
         public T AddComponent<T> () where T : Component, new ()
