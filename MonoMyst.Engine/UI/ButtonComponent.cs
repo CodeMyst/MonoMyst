@@ -3,6 +3,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+using MonoMyst.Core;
+
 using MonoMyst.Engine.Components;
 
 namespace MonoMyst.Engine.UI
@@ -24,7 +26,7 @@ namespace MonoMyst.Engine.UI
             currentMouseState = Mouse.GetState ();
 
             Rectangle buttonRect = new Rectangle (Entity.Position, Size);
-            Rectangle mouseRect = new Rectangle (currentMouseState.Position.X, currentMouseState.Position.Y, 1, 1);
+            Rectangle mouseRect = new Rectangle (Camera.Main.ScreenToWorld (currentMouseState.Position), new Point (1));
 
             if (buttonRect.Intersects (mouseRect))
             {
