@@ -7,6 +7,7 @@ using MonoMyst.Core;
 using MonoMyst.Core.ECS;
 
 using MonoMyst.Engine.UI;
+using MonoMyst.Engine.Components;
 
 namespace MonoMyst.Sandbox
 {
@@ -21,31 +22,31 @@ namespace MonoMyst.Sandbox
             base.Initialize ();
 
             SpriteFont font = Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular");
-            string text = "This is a test text component";
 
-            Entity button = Entity.CreateSceneEntity ("TextTest");
-            button.Position = new Vector2 (10, 10);
+            Entity entity1 = Entity.CreateSceneEntity ("Entity 1");
+            Entity entity11 = Entity.CreateSceneEntity ("Entity 11");
+            Entity entity12 = Entity.CreateSceneEntity ("Entity 12");
+            Entity entity13 = Entity.CreateSceneEntity ("Entity 13");
+            Entity entity14 = Entity.CreateSceneEntity ("Entity 14");
+            Entity entity15 = Entity.CreateSceneEntity ("Entity 15");
+            Entity entity16 = Entity.CreateSceneEntity ("Entity 16");
+            entity11.SetParent (entity1);
+            entity12.SetParent (entity1);
+            entity13.SetParent (entity1);
+            entity14.SetParent (entity1);
+            entity15.SetParent (entity1);
+            entity16.SetParent (entity1);
 
-            ButtonComponent buttonComponent = button.AddComponent<ButtonComponent> ();
-            buttonComponent.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
-            buttonComponent.Size = new Point ((int) font.MeasureString (text).X, (int) font.MeasureString (text).Y);
-            buttonComponent.Color = Color.DarkOrange;
+            Entity entity111 = Entity.CreateSceneEntity ("Entity 111");
+            entity111.SetParent (entity11);
 
-            TextComponent textComponent = button.AddComponent<TextComponent> ();
-            textComponent.Text = text;
-            textComponent.Font = font;
+            entity1.AddComponent<SpriteComponent> ();
+            TextComponent tc = entity1.AddComponent<TextComponent> ();
+            tc.Color = Color.White;
+            tc.Font = font;
+            tc.Text = Entity.GetHierarchy (entity1, "", true);
 
-            int count = 0;
-
-            buttonComponent.OnPressed += () =>
-            {
-                count++;
-                text = count.ToString ();
-                buttonComponent.Size = new Point ((int) font.MeasureString (text).X, (int) font.MeasureString (text).Y);
-                textComponent.Text = text;
-
-                Console.WriteLine (button.GetComponent<ButtonComponent> ().Color);
-            };
+            Console.WriteLine (Entity.GetHierarchy (entity1, "", true));
         }
     }
 }

@@ -13,6 +13,9 @@ namespace MonoMyst.Core.ECS
 
         private List<Component> components = new List<Component> ();
 
+        public Entity Parent { get; private set; }
+        private List<Entity> children = new List<Entity> ();
+
         private Entity ()
         {
             Transform = new Transform (Vector2.Zero, 0f, Vector2.One);
@@ -77,6 +80,12 @@ namespace MonoMyst.Core.ECS
             return components.Find (s => s.GetType () == typeof (T)) as T;
         }
 
+        public void SetParent (Entity e)
+        {
+            Parent = e;
+            e.children.Add (this);
+        }
+
         public virtual void Update (float deltaTime)
         {
             foreach (Component c in components)
@@ -87,6 +96,29 @@ namespace MonoMyst.Core.ECS
         {
             foreach (Component c in components)
                 c.Draw (spriteBatch);
+        }
+
+        public static string GetHierarchy (Entity e, string indent, bool last)
+        {
+            string h = $"{indent}+- {e.Name}";
+            if (e.components.Count > 0)
+            {
+                h += " (";
+                foreach (Component c in e.components)
+                    h += $"{c.GetType ().Name}, ";
+                h = h.Remove (h.Length - 2);
+                h += ")";
+            }
+            h += "\n";
+
+            indent += last ? "    " : "|  ";
+
+            for (int i = 0; i < e.children.Count; i++)
+            {
+                h += GetHierarchy (e.children [i], indent, i == e.children.Count - 1);
+            }
+
+            return h;
         }
     }
 }
