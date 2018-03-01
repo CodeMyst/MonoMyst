@@ -8,11 +8,17 @@ namespace MonoMyst.Core.ECS
 {
     public class Scene
     {
+        /// <summary>
+        /// The current active scene.
+        /// </summary>
         public static Scene Current { get; internal set; }
 
         public MonoMystGame Game { get; }
         public GraphicsDevice GraphicsDevice { get; }
 
+        /// <summary>
+        /// The color with which the screen will be cleared in this scene.
+        /// </summary>
         public Color ClearColor = new Color (29, 29, 29);
 
         protected ContentManager Content;
@@ -45,6 +51,10 @@ namespace MonoMyst.Core.ECS
                 e.Draw (spriteBatch);
         }
 
+        /// <summary>
+        /// Registers an entity so the entity will receive all the events. Without it the entity is basically useless.
+        /// </summary>
+        /// <param name="e"></param>
         internal void RegisterEntity (Entity e)
         {
             entities.Add (e);

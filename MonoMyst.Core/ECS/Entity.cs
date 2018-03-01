@@ -17,6 +17,9 @@ namespace MonoMyst.Core.ECS
         {
         }
 
+        /// <summary>
+        /// Creates an entity that's tied to the specified scene.
+        /// </summary>
         public static Entity CreateSceneEntity (string name, Scene scene)
         {
             Entity e = new Entity
@@ -27,6 +30,9 @@ namespace MonoMyst.Core.ECS
             return e;
         }
 
+        /// <summary>
+        /// Creates an entity that's tied to the current running scene
+        /// </summary>
         public static Entity CreateSceneEntity (string name)
         {
             Entity e = new Entity

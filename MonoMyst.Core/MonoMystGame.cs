@@ -57,6 +57,9 @@ namespace MonoMyst.Core
             base.Draw (gameTime);
         }
 
+        /// <summary>
+        /// Switches to the next scene.
+        /// </summary>
         public void NextScene (Scene scene)
         {
             Scene = scene;
