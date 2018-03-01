@@ -9,12 +9,31 @@ namespace MonoMyst.Core.ECS
     {
         public string Name { get; set; }
 
-        public Point Position;
+        public Transform Transform { get; private set; }
 
         private List<Component> components = new List<Component> ();
 
         private Entity ()
         {
+            Transform = new Transform (Vector2.Zero, 0f, Vector2.One);
+        }
+
+        public Vector2 Position
+        {
+            get { return Transform.Position; }
+            set { Transform = new Transform (value, Transform.Rotation, Transform.Scale); }
+        }
+
+        public float Rotation
+        {
+            get { return Transform.Rotation; }
+            set { Transform = new Transform (Transform.Position, value, Transform.Scale); }
+        }
+
+        public Vector2 Scale
+        {
+            get { return Transform.Scale; }
+            set { Transform = new Transform (Transform.Position, Transform.Rotation, value); }
         }
 
         /// <summary>

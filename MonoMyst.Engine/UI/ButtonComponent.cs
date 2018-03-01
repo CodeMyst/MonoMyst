@@ -25,7 +25,7 @@ namespace MonoMyst.Engine.UI
 
             currentMouseState = Mouse.GetState ();
 
-            Rectangle buttonRect = new Rectangle (Entity.Position, Size);
+            Rectangle buttonRect = new Rectangle (Entity.Position.ToPoint (), Size);
             Rectangle mouseRect = new Rectangle (Camera.Main.ScreenToWorld (currentMouseState.Position), new Point (1));
 
             if (buttonRect.Intersects (mouseRect))

@@ -14,7 +14,7 @@ namespace MonoMyst.Engine.UI
 
         public override void Draw (SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString (Font, Text, Entity.Position.ToVector2 (), Color, 0f, Vector2.Zero, Scale, SpriteEffects.None, 0);
+            spriteBatch.DrawString (Font, Text, Entity.Position, Color, 0f, Vector2.Zero, Scale, SpriteEffects.None, 0);
         }
     }
 }

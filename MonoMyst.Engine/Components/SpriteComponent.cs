@@ -18,7 +18,7 @@ namespace MonoMyst.Engine.Components
             if (Sprite == null)
                 return;
 
-            spriteBatch.Draw (Sprite, new Rectangle (Entity.Position, Size), null, Color);
+            spriteBatch.Draw (Sprite, new Rectangle (Entity.Position.ToPoint (), Size), null, Color);
         }
     }
 }

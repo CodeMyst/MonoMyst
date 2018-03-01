@@ -24,7 +24,7 @@ namespace MonoMyst.Sandbox
             string text = "This is a test text component";
 
             Entity button = Entity.CreateSceneEntity ("TextTest");
-            button.Position = new Point (10, 10);
+            button.Position = new Vector2 (10, 10);
 
             ButtonComponent buttonComponent = button.AddComponent<ButtonComponent> ();
             buttonComponent.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
