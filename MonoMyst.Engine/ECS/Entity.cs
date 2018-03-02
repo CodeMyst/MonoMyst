@@ -3,7 +3,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoMyst.Core.ECS
+namespace MonoMyst.Engine.ECS
 {
     public class Entity
     {
@@ -16,7 +16,7 @@ namespace MonoMyst.Core.ECS
         public Entity Parent { get; private set; }
         private List<Entity> children = new List<Entity> ();
 
-        private Entity ()
+        protected Entity ()
         {
             Transform = new Transform (Vector2.Zero, 0f, Vector2.One);
         }
@@ -57,12 +57,7 @@ namespace MonoMyst.Core.ECS
         /// </summary>
         public static Entity CreateSceneEntity (string name)
         {
-            Entity e = new Entity
-            {
-                Name = name
-            };
-            Scene.Current.RegisterEntity (e);
-            return e;
+            return CreateSceneEntity (name, Scene.Current);
         }
 
         public T AddComponent<T> () where T : Component, new ()

@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using MonoMyst.Core.ECS;
-
-namespace MonoMyst.Engine.Components
+namespace MonoMyst.Engine.ECS.Components
 {
     public class SpriteComponent : Component
     {

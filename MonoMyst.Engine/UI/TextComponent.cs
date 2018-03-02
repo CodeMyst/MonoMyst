@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using MonoMyst.Core.ECS;
+using MonoMyst.Engine.ECS;
 
 namespace MonoMyst.Engine.UI
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace MonoMyst.Core.ECS
+namespace MonoMyst.Engine.ECS
 {
     public struct Transform
     {

@@ -3,9 +3,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-using MonoMyst.Core;
-
-using MonoMyst.Engine.Components;
+using MonoMyst.Engine.ECS.Components;
 
 namespace MonoMyst.Engine.UI
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoMyst.Core
+namespace MonoMyst.Engine
 {
     public class Camera
     {

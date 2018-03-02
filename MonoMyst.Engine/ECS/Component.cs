@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoMyst.Core.ECS
+namespace MonoMyst.Engine.ECS
 {
     public class Component
     {

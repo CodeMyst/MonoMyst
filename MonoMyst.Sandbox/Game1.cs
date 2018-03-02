@@ -1,15 +1,10 @@
-﻿using MonoMyst.Core;
-using MonoMyst.Core.ECS;
+﻿using MonoMyst.Engine;
+using MonoMyst.Engine.ECS;
 
 namespace MonoMyst.Sandbox
 {
     public class Game1 : MonoMystGame
     {
-        public Game1 ()
-        {
-            Window.AllowUserResizing = true;
-        }
-
         protected override void Initialize ()
         {
             base.Initialize ();
