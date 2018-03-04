@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+using MonoMyst.Engine.UI;
+
 namespace MonoMyst.Engine.ECS
 {
     public class Scene
@@ -23,11 +25,14 @@ namespace MonoMyst.Engine.ECS
 
         protected ContentManager Content;
 
+        protected UIHost UI;
+
         private List<Entity> entities = new List<Entity> ();
 
         public Scene (MonoMystGame game, GraphicsDevice graphicsDevice)
         {
             Game = game;
+            UI = game.UI;
             GraphicsDevice = graphicsDevice;
         }
 

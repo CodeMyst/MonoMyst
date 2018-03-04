@@ -1,7 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine;
+using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
+using MonoMyst.Engine.ECS.Components;
 
 namespace MonoMyst.Sandbox
 {
@@ -14,6 +17,22 @@ namespace MonoMyst.Sandbox
         public override void Initialize ()
         {
             base.Initialize ();
+
+            Grid grid = new Grid
+            {
+                DebugDraw = true
+            };
+
+            TextBlock t1 = new TextBlock ("TextBlock", 1f, Color.White, Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular"));
+            grid.Widgets.Add (t1);
+
+            UI.AddWidget (grid);
+
+            //Entity e = Entity.CreateSceneEntity ("Test");
+            //SpriteComponent sc = e.AddComponent<SpriteComponent> ();
+            //sc.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
+            //sc.Size = new Point (50, 50);
+            //sc.Color = Color.MonoGameOrange;
         }
     }
 }

@@ -5,6 +5,11 @@ namespace MonoMyst.Sandbox
 {
     public class Game1 : MonoMystGame
     {
+        public Game1 () : base ()
+        {
+            Window.AllowUserResizing = true;
+        }
+
         protected override void Initialize ()
         {
             base.Initialize ();
