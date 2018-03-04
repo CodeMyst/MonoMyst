@@ -54,6 +54,7 @@ namespace MonoMyst.Engine.UI
 
         public Grid ()
         {
+            _widgets.CollectionChanged += WidgetsChanged;
             _columnDefinitions.CollectionChanged += ColumnsChanged;
             _rowDefinitions.CollectionChanged += RowsChanged;
         }
@@ -63,6 +64,24 @@ namespace MonoMyst.Engine.UI
             base.Initialize ();
 
             rect = MonoMystGame.MMContent.Load<Texture2D> ("Rectangle");
+        }
+
+        private void WidgetsChanged (object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (Widget w in e.NewItems)
+                {
+                    w.Parent = this;
+                }
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                foreach (Widget w in e.NewItems)
+                {
+                    w.Parent = null;
+                }
+            }
         }
 
         private void ColumnsChanged (object sender, NotifyCollectionChangedEventArgs e)

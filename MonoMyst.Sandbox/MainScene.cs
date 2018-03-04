@@ -20,11 +20,16 @@ namespace MonoMyst.Sandbox
 
             Grid grid = new Grid
             {
-                DebugDraw = true
+                DebugDraw = true,
+                Padding = new Thickness (20, 20, 20, 20)
             };
 
             TextBlock t1 = new TextBlock ("TextBlock", 1f, Color.White, Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular"));
             grid.Widgets.Add (t1);
+
+            TextBlock t2 = new TextBlock ("TextBlock", 1f, Color.White, Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular"));
+            t1.Padding = new Thickness (20, 20, 20, 20);
+            grid.Widgets.Add (t2);
 
             UI.AddWidget (grid);
 

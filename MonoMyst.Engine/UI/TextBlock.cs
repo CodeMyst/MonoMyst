@@ -22,7 +22,7 @@ namespace MonoMyst.Engine.UI
         {
             base.Draw (spriteBatch);
 
-            spriteBatch.DrawString (Font, Text, Vector2.Zero, Color, 0f, Vector2.Zero, FontSize, SpriteEffects.None, 0);
+            spriteBatch.DrawString (Font, Text, new Vector2 (Position.X + Padding.Left + Parent.Padding.Left, Position.Y + Padding.Top + Parent.Padding.Top), Color, 0f, Vector2.Zero, FontSize, SpriteEffects.None, 0);
         }
     }
 }

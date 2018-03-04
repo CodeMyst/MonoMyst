@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.UI
@@ -8,6 +9,9 @@ namespace MonoMyst.Engine.UI
         public ContentManager Content;
 
         public Widget Parent;
+
+        private Vector2 position = Vector2.Zero;
+        public Vector2 Position => position;
 
         public int GridColumn = 0;
         public int GridRow = 0;
@@ -20,10 +24,7 @@ namespace MonoMyst.Engine.UI
 
         private bool _visible;
 
-        private int _paddingLeft;
-        private int _paddingTop;
-        private int _paddingRight;
-        private int _paddingBottom;
+        public Thickness Padding;
 
         public virtual void Initialize () { }
         public virtual void Draw (SpriteBatch spriteBatch) { }
