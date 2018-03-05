@@ -1,19 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
-using Microsoft.Xna.Framework.Content;
-using System;
 
 namespace MonoMyst.Engine
 {
     public class MonoMystGame : Game
     {
         public static Scene Scene { get; private set; }
-
-        public UIHost UI { get; private set; }
 
         public static GraphicsDeviceManager GraphicsDeviceManager;
         private SpriteBatch spriteBatch;
@@ -34,7 +30,6 @@ namespace MonoMyst.Engine
             {
                 Position = Vector2.Zero
             };
-            UI = new UIHost (Content);
         }
 
         protected override void Initialize ()
@@ -71,12 +66,6 @@ namespace MonoMyst.Engine
             spriteBatch.Begin (transformMatrix: Camera.Transform);
 
             Scene.Draw (spriteBatch);
-
-            spriteBatch.End ();
-
-            spriteBatch.Begin ();
-
-            UI.Draw (spriteBatch);
 
             spriteBatch.End ();
 
