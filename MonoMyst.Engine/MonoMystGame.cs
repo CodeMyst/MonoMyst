@@ -18,6 +18,7 @@ namespace MonoMyst.Engine
 
         public static ContentManager MMContent;
 
+
         public MonoMystGame ()
         {
             ResourceContentManager resxContent = new ResourceContentManager (Services, Resource1.ResourceManager);
