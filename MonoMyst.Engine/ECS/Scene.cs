@@ -21,7 +21,7 @@ namespace MonoMyst.Engine.ECS
         /// <summary>
         /// The color with which the screen will be cleared in this scene.
         /// </summary>
-        public Color ClearColor = new Color (29, 29, 29);
+        public Color ClearColor = MonoMystColors.MonoMystColor;
 
         protected ContentManager Content;
 

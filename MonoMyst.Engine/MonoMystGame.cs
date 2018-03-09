@@ -17,7 +17,7 @@ namespace MonoMyst.Engine
         public static Camera Camera { get; private set; }
 
         protected GraphicsDeviceManager GraphicsDeviceManager;
-        public static ContentManager MMContent;
+        internal static ContentManager MMContent;
 
         public UIHost UI { get; private set; }
 

@@ -15,6 +15,7 @@ namespace MonoMyst.Engine.UI
         public UIHost (ContentManager content, GraphicsDevice graphicsDevice)
         {
             Content = content;
+            Content.RootDirectory = "Content";
             GraphicsDevice = graphicsDevice;
         }
 

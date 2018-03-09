@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine;
 using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.UI.Widgets;
-using Microsoft.Xna.Framework;
 
 namespace MonoMyst.LevelEditor
 {
@@ -15,16 +15,18 @@ namespace MonoMyst.LevelEditor
 
         public MainScene (MonoMystGame game, GraphicsDevice graphicsDevice) : base (game, graphicsDevice)
         {
+            ClearColor = Color.Black;
         }
 
         public override void Initialize ()
         {
             base.Initialize ();
 
-            PanelWidget layersPanel = new PanelWidget
+            PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget
             {
                 HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Stretch
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Title = "Layers"
             };
             layersPanel.Size.X = 300;
 

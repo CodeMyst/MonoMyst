@@ -25,3 +25,10 @@
 /processorParam:TextureFormat=Color
 /build:Rectangle.png
 
+#begin Fonts/Noto/NotoSans-Regular.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Color
+/build:Fonts/Noto/NotoSans-Regular.spritefont
+

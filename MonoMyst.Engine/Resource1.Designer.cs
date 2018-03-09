@@ -63,6 +63,16 @@ namespace MonoMyst.Engine {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] NotoSans_Regular {
+            get {
+                object obj = ResourceManager.GetObject("NotoSans_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Rectangle {
             get {
                 object obj = ResourceManager.GetObject("Rectangle", resourceCulture);
