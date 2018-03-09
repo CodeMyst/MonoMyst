@@ -40,7 +40,8 @@ namespace MonoMyst.LevelEditor
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Bottom,
-                Color = Color.Red
+                Color = Color.Red,
+                Padding = new Thickness (50, 0, 300, 0)
             };
             tilesPanel.Size.Y = 75;
 
