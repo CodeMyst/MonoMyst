@@ -27,6 +27,12 @@ namespace MonoMyst.Engine.UI
             widgets.Add (widget);
         }
 
+        public void Update (float deltaTime)
+        {
+            foreach (Widget w in widgets)
+                w.Update (deltaTime);
+        }
+
         public void Draw (SpriteBatch spriteBatch)
         {
             foreach (Widget w in widgets)

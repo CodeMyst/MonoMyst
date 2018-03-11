@@ -22,34 +22,60 @@ namespace MonoMyst.LevelEditor
         {
             base.Initialize ();
 
-            PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget
-            {
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Title = "Layers"
-            };
-            layersPanel.Size.X = 300;
+            //MenuBarWidget menuBar = new MenuBarWidget ();
+            //menuBar.AddButton (new MenuBarButtonWidget ("File", MenuBarButtonType.Category));
+            //menuBar.AddButton (new MenuBarButtonWidget ("Edit", MenuBarButtonType.Category));
+            //menuBar.AddButton (new MenuBarButtonWidget ("Help", MenuBarButtonType.Category));
 
-            PanelWidget toolsPanel = new PanelWidget
-            {
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Color = Color.Blue
-            };
-            toolsPanel.Size.X = 50;
+            //UI.AddWidget (menuBar);
 
-            PanelWidget tilesPanel = new PanelWidget
+            //PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget
+            //{
+            //    HorizontalAlignment = HorizontalAlignment.Right,
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    Title = "Layers"
+            //};
+            //layersPanel.Size.X = 300;
+
+            //PanelWidget toolsPanel = new PanelWidget
+            //{
+            //    HorizontalAlignment = HorizontalAlignment.Left,
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    Color = Color.Blue
+            //};
+            //toolsPanel.Size.X = 50;
+
+            //PanelWidget tilesPanel = new PanelWidget
+            //{
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    VerticalAlignment = VerticalAlignment.Bottom,
+            //    Color = Color.Red,
+            //    Padding = new Thickness (50, 0, 300, 0)
+            //};
+            //tilesPanel.Size.Y = 75;
+
+            //UI.AddWidget (layersPanel);
+            //UI.AddWidget (toolsPanel);
+            //UI.AddWidget (tilesPanel);
+
+            PanelWidget panelWidget = new PanelWidget
             {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Bottom,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Size = new Vector2 (500, 500),
+            };
+
+            PanelWidget childPanel = new PanelWidget
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Stretch,
                 Color = Color.Red,
-                Padding = new Thickness (50, 0, 300, 0)
+                Size = new Vector2 (50, 50)
             };
-            tilesPanel.Size.Y = 75;
 
-            UI.AddWidget (layersPanel);
-            UI.AddWidget (toolsPanel);
-            UI.AddWidget (tilesPanel);
+            panelWidget.AddChild (childPanel);
+
+            UI.AddWidget (panelWidget);
         }
     }
 }

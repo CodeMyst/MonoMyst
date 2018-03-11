@@ -12,6 +12,7 @@ namespace MonoMyst.LevelEditor
             GraphicsDeviceManager.ApplyChanges ();
             Window.AllowAltF4 = true;
             Window.AllowUserResizing = true;
+            Window.Title = "MonoMyst Level Editor - Empty Project";
         }
 
         protected override void Initialize ()

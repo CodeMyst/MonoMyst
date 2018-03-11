@@ -13,7 +13,7 @@ namespace MonoMyst.Engine.UI.Widgets
         {
             base.Draw (spriteBatch);
 
-            spriteBatch.Draw (GraphicUtilities.Rectangle, new Rectangle ((int) DrawPosition.X, (int) DrawPosition.Y, (int) DrawSize.X, (int) DrawSize.Y), Color);
+            spriteBatch.Draw (GraphicUtilities.Rectangle, new Rectangle ((int) DrawPosition.X, (int) DrawPosition.Y, (int) DrawSize.X, (int) DrawSize.Y), null, Color, 0f, Vector2.Zero, SpriteEffects.None, SortingOrder);
         }
     }
 }
