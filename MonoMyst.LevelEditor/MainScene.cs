@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine;
-using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.UI.Widgets;
 
@@ -22,12 +21,25 @@ namespace MonoMyst.LevelEditor
         {
             base.Initialize ();
 
-            //MenuBarWidget menuBar = new MenuBarWidget ();
-            //menuBar.AddButton (new MenuBarButtonWidget ("File", MenuBarButtonType.Category));
-            //menuBar.AddButton (new MenuBarButtonWidget ("Edit", MenuBarButtonType.Category));
-            //menuBar.AddButton (new MenuBarButtonWidget ("Help", MenuBarButtonType.Category));
+            MenuBarWidget menuBar = new MenuBarWidget ();
 
-            //UI.AddWidget (menuBar);
+            MenuBarButtonWidget file = new MenuBarButtonWidget ("File", MenuBarButtonType.Category, true);
+            file.AddButton (new MenuBarButtonWidget ("New", MenuBarButtonType.Action, true));
+            file.AddButton (new MenuBarButtonWidget ("Save", MenuBarButtonType.Action, false));
+            file.AddButton (new MenuBarButtonWidget ("Load", MenuBarButtonType.Action, true));
+            file.AddButton (new MenuBarButtonWidget ("Exit", MenuBarButtonType.Action, true));
+
+            MenuBarButtonWidget edit = new MenuBarButtonWidget ("Edit", MenuBarButtonType.Category, true);
+            edit.AddButton (new MenuBarButtonWidget ("Cut", MenuBarButtonType.Action, true));
+            edit.AddButton (new MenuBarButtonWidget ("Copy", MenuBarButtonType.Action, true));
+            edit.AddButton (new MenuBarButtonWidget ("Paste", MenuBarButtonType.Action, false));
+            edit.AddButton (new MenuBarButtonWidget ("Undo", MenuBarButtonType.Action, false));
+            edit.AddButton (new MenuBarButtonWidget ("Redo", MenuBarButtonType.Action, false));
+
+            menuBar.AddButton (file);
+            menuBar.AddButton (edit);
+
+            UI.AddWidget (menuBar);
 
             //PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget
             //{
@@ -57,25 +69,6 @@ namespace MonoMyst.LevelEditor
             //UI.AddWidget (layersPanel);
             //UI.AddWidget (toolsPanel);
             //UI.AddWidget (tilesPanel);
-
-            PanelWidget panelWidget = new PanelWidget
-            {
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Size = new Vector2 (500, 500),
-            };
-
-            PanelWidget childPanel = new PanelWidget
-            {
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Color = Color.Red,
-                Size = new Vector2 (50, 50)
-            };
-
-            panelWidget.AddChild (childPanel);
-
-            UI.AddWidget (panelWidget);
         }
     }
 }

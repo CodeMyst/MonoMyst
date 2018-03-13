@@ -13,6 +13,19 @@ namespace MonoMyst.Engine.UI.Widgets
 
         private SpriteFont font;
 
+        private HorizontalLayoutGroupWidget horizontalLayoutGroup;
+
+        public MenuBarWidget ()
+        {
+            horizontalLayoutGroup = new HorizontalLayoutGroupWidget
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+            };
+            AddChild (horizontalLayoutGroup);
+            Size.Y = 20;
+        }
+
         public override void Initialize ()
         {
             base.Initialize ();
@@ -22,7 +35,7 @@ namespace MonoMyst.Engine.UI.Widgets
 
         public void AddButton (MenuBarButtonWidget button)
         {
-            throw new System.NotImplementedException ();
+            horizontalLayoutGroup.AddChild (button);
         }
 
         public override void Update (float deltaTime)
@@ -34,7 +47,7 @@ namespace MonoMyst.Engine.UI.Widgets
         {
             base.Draw (spriteBatch);
 
-            spriteBatch.Draw (GraphicUtilities.Rectangle, new Rectangle (0, 0, ScreenWidth, 25), Color);
+            spriteBatch.Draw (GraphicUtilities.Rectangle, new Rectangle (0, 0, ScreenWidth, (int) DrawSize.Y), Color);
         }
     }
 }

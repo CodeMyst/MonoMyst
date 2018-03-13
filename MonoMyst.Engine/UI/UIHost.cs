@@ -36,7 +36,8 @@ namespace MonoMyst.Engine.UI
         public void Draw (SpriteBatch spriteBatch)
         {
             foreach (Widget w in widgets)
-                w.Draw (spriteBatch);
+                if (w.Visible)
+                    w.Draw (spriteBatch);
         }
     }
 }
