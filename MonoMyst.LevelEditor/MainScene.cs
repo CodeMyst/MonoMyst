@@ -40,34 +40,15 @@ namespace MonoMyst.LevelEditor
             menuBar.AddButton (edit);
             UI.AddWidget (menuBar);
 
-            //PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget
-            //{
-            //    HorizontalAlignment = HorizontalAlignment.Right,
-            //    VerticalAlignment = VerticalAlignment.Stretch,
-            //    Title = "Layers"
-            //};
-            //layersPanel.Size.X = 300;
+            ButtonWidget button = new ButtonWidget ("Test Button")
+            {
+                VerticalAlignment = Engine.UI.VerticalAlignment.Center,
+                HorizontalAlignment = Engine.UI.HorizontalAlignment.Center,
+                Size = new Vector2 (100, 50),
+                Padding = new Engine.UI.Thickness (20, 10, 20, 10)
+            };
 
-            //PanelWidget toolsPanel = new PanelWidget
-            //{
-            //    HorizontalAlignment = HorizontalAlignment.Left,
-            //    VerticalAlignment = VerticalAlignment.Stretch,
-            //    Color = Color.Blue
-            //};
-            //toolsPanel.Size.X = 50;
-
-            //PanelWidget tilesPanel = new PanelWidget
-            //{
-            //    HorizontalAlignment = HorizontalAlignment.Stretch,
-            //    VerticalAlignment = VerticalAlignment.Bottom,
-            //    Color = Color.Red,
-            //    Padding = new Thickness (50, 0, 300, 0)
-            //};
-            //tilesPanel.Size.Y = 75;
-
-            //UI.AddWidget (layersPanel);
-            //UI.AddWidget (toolsPanel);
-            //UI.AddWidget (tilesPanel);
+            UI.AddWidget (button);
         }
     }
 }

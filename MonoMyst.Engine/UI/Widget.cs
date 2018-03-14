@@ -31,6 +31,7 @@ namespace MonoMyst.Engine.UI
         public float SortingOrder;
 
         public bool Visible = true;
+        public bool Enabled = true;
 
         public virtual void Initialize ()
         {

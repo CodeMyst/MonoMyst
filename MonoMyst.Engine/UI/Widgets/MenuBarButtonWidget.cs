@@ -23,11 +23,10 @@ namespace MonoMyst.Engine.UI.Widgets
         public Color ClickedColor = MonoMystColors.MonoMystDarkerColor;
 
         private bool hovering;
+        private bool clicked;
 
         private MouseState currentState;
         private MouseState previousState;
-
-        public bool Enabled = true;
 
         public MenuBarSubmenuWidget Submenu { get; private set; }
 
@@ -78,16 +77,27 @@ namespace MonoMyst.Engine.UI.Widgets
 
             if (new Rectangle (DrawPosition.ToPoint (), DrawSize.ToPoint ()).Intersects (mouseRect))
                 hovering = true;
-            else
+            else {
                 hovering = false;
+                clicked = false;
+            }
 
             if (hovering && Enabled && currentState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
             {
+                clicked = true;
                 OnClicked?.Invoke ();
             }
             else if (!hovering && !new Rectangle (Submenu.DrawPosition.ToPoint (), Submenu.DrawSize.ToPoint ()).Intersects (mouseRect) && currentState.LeftButton == ButtonState.Pressed)
             {
                 Submenu.Visible = false;
+            }
+            else if (clicked && Enabled && currentState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Pressed)
+            {
+                clicked = true;
+            }
+            else
+            {
+                clicked = false;
             }
 
             previousState = currentState;
@@ -108,7 +118,7 @@ namespace MonoMyst.Engine.UI.Widgets
                     GraphicUtilities.Rectangle,
                     new Rectangle (DrawPosition.ToPoint (), DrawSize.ToPoint ()),
                     null,
-                    hovering ? HoverBackgroundColor : NormalBackgroundColor,
+                    clicked ? ClickedColor : hovering ? HoverBackgroundColor : NormalBackgroundColor,
                     0f,
                     Vector2.Zero,
                     SpriteEffects.None,

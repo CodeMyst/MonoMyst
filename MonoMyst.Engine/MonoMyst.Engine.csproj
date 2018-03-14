@@ -63,6 +63,7 @@
     <Compile Include="UI\UIHost.cs" />
     <Compile Include="UI\VerticalAlignment.cs" />
     <Compile Include="UI\Widget.cs" />
+    <Compile Include="UI\Widgets\ButtonWidget.cs" />
     <Compile Include="UI\Widgets\HorizontalLayoutGroupWidget.cs" />
     <Compile Include="UI\Widgets\MenuBarButtonType.cs" />
     <Compile Include="UI\Widgets\MenuBarButtonWidget.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="UI\Widgets\MenuBarWidget.cs" />
     <Compile Include="UI\Widgets\PanelWidget.cs" />
     <Compile Include="UI\Widgets\PanelWithTitleBarWidget.cs" />
+    <Compile Include="UI\Widgets\TextBlockWidget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
