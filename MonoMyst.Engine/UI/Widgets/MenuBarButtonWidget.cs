@@ -12,7 +12,7 @@ namespace MonoMyst.Engine.UI.Widgets
     {
         public string Title { get; protected set; }
         protected MenuBarButtonType ButtonType;
-        private MenuBarButtonPosition menuPosition;
+        private MenuBarButtonPosition menuPosition = MenuBarButtonPosition.TopMenu;
 
         private SpriteFont font;
 
@@ -23,9 +23,6 @@ namespace MonoMyst.Engine.UI.Widgets
         public Color ClickedColor = MonoMystColors.MonoMystDarkerColor;
 
         private bool hovering;
-        private bool clicked;
-
-        private bool canBeClicked = true;
 
         private MouseState currentState;
         private MouseState previousState;
@@ -59,11 +56,16 @@ namespace MonoMyst.Engine.UI.Widgets
         private void MenuBarButtonWidget_OnClicked ()
         {
             Submenu.Visible = !Submenu.Visible;
+            if (menuPosition == MenuBarButtonPosition.SubMenu)
+            {
+                Parent.Visible = false;
+            }
         }
 
         public void AddButton (MenuBarButtonWidget button)
         {
             Submenu.AddButton (button);
+            button.menuPosition = MenuBarButtonPosition.SubMenu;
         }
 
         public override void Update (float deltaTime)
@@ -79,18 +81,14 @@ namespace MonoMyst.Engine.UI.Widgets
             else
                 hovering = false;
 
-            if (hovering && currentState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
+            if (hovering && Enabled && currentState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
             {
-                clicked = true;
                 OnClicked?.Invoke ();
             }
             else if (!hovering && !new Rectangle (Submenu.DrawPosition.ToPoint (), Submenu.DrawSize.ToPoint ()).Intersects (mouseRect) && currentState.LeftButton == ButtonState.Pressed)
             {
-                clicked = false;
                 Submenu.Visible = false;
             }
-            else
-                clicked = false;
 
             previousState = currentState;
         }

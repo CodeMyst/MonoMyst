@@ -21,6 +21,7 @@ namespace MonoMyst.Engine.UI.Widgets
         {
             buttons.Add (button);
             button.Initialize ();
+            button.Parent = this;
         }
 
         public override void Initialize ()
