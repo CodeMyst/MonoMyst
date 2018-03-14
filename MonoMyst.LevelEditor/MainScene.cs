@@ -38,7 +38,6 @@ namespace MonoMyst.LevelEditor
 
             menuBar.AddButton (file);
             menuBar.AddButton (edit);
-
             UI.AddWidget (menuBar);
 
             //PanelWithTitleBarWidget layersPanel = new PanelWithTitleBarWidget

@@ -27,7 +27,7 @@ namespace MonoMyst.Engine.UI.Widgets
         {
             base.Initialize ();
 
-            font = MonoMystGame.MMContent.Load<SpriteFont> ("NotoSans_Regular");
+            font = MonoMystGame.MMContent.Load<SpriteFont> ("NotoSansRegular");
         }
 
         public override void Update (float deltaTime)

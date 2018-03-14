@@ -25,7 +25,7 @@ namespace MonoMyst.Engine
         {
             GraphicsDeviceManager = new GraphicsDeviceManager (this);
 
-            ResourceContentManager resxContent = new ResourceContentManager (Services, Resource1.ResourceManager);
+            ResourceContentManager resxContent = new ResourceContentManager (Services, Resources.ResourceManager);
             MMContent = resxContent;
 
             IsMouseVisible = true;

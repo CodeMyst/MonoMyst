@@ -15,9 +15,6 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            Content.Load<SpriteFont> ("Fonts/Montserrat/Montserrat-Regular");
-
-
             //Entity e = Entity.CreateSceneEntity ("Test");
             //SpriteComponent sc = e.AddComponent<SpriteComponent> ();
             //sc.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
