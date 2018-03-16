@@ -44,7 +44,7 @@ namespace MonoMyst.Engine
         protected override void LoadContent ()
         {
             spriteBatch = new SpriteBatch (GraphicsDevice);
-            UI = new UIHost (new ContentManager (Services), GraphicsDevice);
+            UI = new UIHost (this);
         }
 
         protected override void Update (GameTime gameTime)

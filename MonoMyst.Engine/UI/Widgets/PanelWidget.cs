@@ -1,19 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine.UI.Widgets
 {
     public class PanelWidget : Widget
     {
-        public Color Color = Color.White;
-
         public override void Draw (SpriteBatch spriteBatch)
         {
             base.Draw (spriteBatch);
 
-            spriteBatch.Draw (GraphicUtilities.Rectangle, new Rectangle ((int) DrawPosition.X, (int) DrawPosition.Y, (int) DrawSize.X, (int) DrawSize.Y), null, Color, 0f, Vector2.Zero, SpriteEffects.None, SortingOrder);
+            spriteBatch.Draw
+                (
+                    GraphicUtilities.Rectangle,
+                    new Rectangle (Position.ToPoint (), Scale.ToPoint ()),
+                    null,
+                    Color,
+                    Rotation,
+                    Origin,
+                    SpriteEffects.None,
+                    SortingOrder
+                );
         }
     }
 }

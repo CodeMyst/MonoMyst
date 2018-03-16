@@ -1,43 +1,45 @@
 ﻿using System.Collections.Generic;
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.UI
 {
-    public class UIHost
+    public class UIHost : MonoMystObject
     {
+        protected Game Game;
+
         protected ContentManager Content;
-        protected GraphicsDevice GraphicsDevice;
 
-        private List<Widget> widgets = new List<Widget> ();
+        private List<Canvas> canvasses = new List<Canvas> ();
 
-        public UIHost (ContentManager content, GraphicsDevice graphicsDevice)
+        public UIHost (Game game)
         {
-            Content = content;
-            Content.RootDirectory = "Content";
-            GraphicsDevice = graphicsDevice;
+            Game = game;
+
+            Content = new ContentManager (Game.Services)
+            {
+                RootDirectory = "Content"
+            };
         }
 
-        public void AddWidget (Widget widget)
+        public void AddCanvas (Canvas canvas)
         {
-            widget.Content = Content;
-            widget.GraphicsDevice = GraphicsDevice;
-            widget.Initialize ();
-            widgets.Add (widget);
+            canvasses.Add (canvas);
+            canvas.Initialize ();
         }
 
-        public void Update (float deltaTime)
+        public override void Draw (SpriteBatch spriteBatch)
         {
-            foreach (Widget w in widgets)
-                w.Update (deltaTime);
+            foreach (Canvas c in canvasses)
+                c.Draw (spriteBatch);
         }
 
-        public void Draw (SpriteBatch spriteBatch)
+        public override void Update (float deltaTime)
         {
-            foreach (Widget w in widgets)
-                if (w.Visible)
-                    w.Draw (spriteBatch);
+            foreach (Canvas c in canvasses)
+                c.Update (deltaTime);
         }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace MonoMyst.Engine.ECS
 {
+    /// <summary>
+    /// A components sits on an <seealso cref="MonoMyst.Engine.ECS.Entity"/> and does the logic.
+    /// </summary>
     public class Component
     {
         /// <summary>

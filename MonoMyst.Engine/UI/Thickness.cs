@@ -12,6 +12,8 @@
             Bottom = bottom;
         }
 
+        public Thickness (int thickness) : this (thickness, thickness, thickness, thickness) { }
+
         public static Thickness Zero => new Thickness (0, 0, 0, 0);
     }
 }

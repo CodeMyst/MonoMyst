@@ -3,10 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.ECS.Components
 {
+    /// <summary>
+    /// Renders a sprite.
+    /// </summary>
     public class SpriteComponent : Component
     {
         public Texture2D Sprite;
 
+        /// <summary>
+        /// Size of the shown sprite in pixels.
+        /// </summary>
         public Point Size = new Point (1, 1);
 
         public Color Color = Color.White;

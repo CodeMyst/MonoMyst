@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.ECS
 {
+    /// <summary>
+    /// Entity is a base object in the scene. It holds <seealso cref="Component"/>s which do the logic.
+    /// </summary>
     public class Entity
     {
         public string Name { get; set; }
