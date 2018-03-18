@@ -17,7 +17,7 @@ namespace MonoMyst.Engine.UI.Widgets
                     null,
                     Color,
                     Rotation,
-                    Origin,
+                    Vector2.Zero,
                     SpriteEffects.None,
                     SortingOrder
                 );

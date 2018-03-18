@@ -26,8 +26,10 @@ namespace MonoMyst.LevelEditor
 
             PanelWidget panel = new PanelWidget ()
             {
-                Scale = new Vector2 (500, 100),
-                VerticalAlignment = VerticalAlignment.Stretch
+                Scale = new Vector2 (100, 100),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Bottom,
+                Origin = new Vector2 (0f, 1f)
             };
 
             mainCanvas.AddWidget (panel);

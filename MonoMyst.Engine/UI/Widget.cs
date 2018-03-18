@@ -50,6 +50,8 @@ namespace MonoMyst.Engine.UI
         {
             base.Draw (spriteBatch);
 
+            Origin = Vector2.Clamp (Origin, Vector2.Zero, Vector2.One);
+
             switch (HorizontalAlignment)
             {
                 case HorizontalAlignment.Stretch:
@@ -60,17 +62,17 @@ namespace MonoMyst.Engine.UI
 
                 case HorizontalAlignment.Left:
                     {
-
+                        Position = new Vector2 (Parent.Position.X - (Scale.X * Origin.X), Position.Y);
                     } break;
 
                 case HorizontalAlignment.Center:
                     {
-
+                        Position = new Vector2 ((Parent.Scale.X / 2) - (Scale.X * Origin.X), Position.Y);
                     } break;
 
                 case HorizontalAlignment.Right:
                     {
-
+                        Position = new Vector2 ((Parent.Scale.X) - (Scale.X * Origin.X), Position.Y);
                     } break;
             }
 
@@ -85,19 +87,19 @@ namespace MonoMyst.Engine.UI
 
                 case VerticalAlignment.Top:
                     {
-
+                        Position = new Vector2 (Position.X, Parent.Position.Y - (Scale.Y * Origin.Y));
                     }
                     break;
 
                 case VerticalAlignment.Center:
                     {
-
+                        Position = new Vector2 (Position.X, (Parent.Scale.Y / 2) - (Scale.Y * Origin.Y));
                     }
                     break;
 
                 case VerticalAlignment.Bottom:
                     {
-
+                        Position = new Vector2 (Position.X, Parent.Scale.Y - (Scale.Y * Origin.Y));
                     }
                     break;
             }
