@@ -24,15 +24,15 @@ namespace MonoMyst.LevelEditor
 
             Canvas mainCanvas = new Canvas ();
 
-            PanelWidget panel = new PanelWidget ()
+            TextBlockWidget text = new TextBlockWidget ()
             {
-                Scale = new Vector2 (100, 100),
-                HorizontalAlignment = HorizontalAlignment.Left,
+                Text = "Hello World",
+                HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Bottom,
-                Origin = new Vector2 (0f, 1f)
+                Origin = new Vector2 (1f, 1f)
             };
 
-            mainCanvas.AddWidget (panel);
+            mainCanvas.AddWidget (text);
 
             UI.AddCanvas (mainCanvas);
 
