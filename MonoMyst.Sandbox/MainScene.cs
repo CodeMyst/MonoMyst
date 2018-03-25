@@ -14,12 +14,6 @@ namespace MonoMyst.Sandbox
         public override void Initialize ()
         {
             base.Initialize ();
-
-            //Entity e = Entity.CreateSceneEntity ("Test");
-            //SpriteComponent sc = e.AddComponent<SpriteComponent> ();
-            //sc.Sprite = Content.Load<Texture2D> ("Sprites/Rectangle");
-            //sc.Size = new Point (50, 50);
-            //sc.Color = Color.MonoGameOrange;
         }
     }
 }
