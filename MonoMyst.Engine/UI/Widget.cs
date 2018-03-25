@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine.ECS;
-using System.Collections.Generic;
 
 namespace MonoMyst.Engine.UI
 {
@@ -34,21 +35,42 @@ namespace MonoMyst.Engine.UI
 
         public Color Color = Color.White;
 
-        public HorizontalAlignment HorizontalAlignment = HorizontalAlignment.None;
-        public VerticalAlignment VerticalAlignment = VerticalAlignment.None;
+        public HorizontalAlignment HorizontalAlignment = HorizontalAlignment.Left;
+        public VerticalAlignment VerticalAlignment = VerticalAlignment.Top;
 
         public Widget Parent { get; private set; }
 
-        private List<Widget> children = new List<Widget> ();
+        public List<Widget> Children { get; private set; } = new List<Widget> ();
 
-        public void SetParent (Widget parent)
+        internal void SetParent (Widget parent)
         {
             Parent = parent;
+        }
+
+        public void AddChild (Widget widget)
+        {
+            Children.Add (widget);
+            widget.SetParent (this);
+            widget.Initialize ();
+        }
+
+        public override void Update (float deltaTime)
+        {
+            base.Update (deltaTime);
+
+            foreach (Widget w in Children)
+                w.Update (deltaTime);
         }
 
         public override void Draw (SpriteBatch spriteBatch)
         {
             base.Draw (spriteBatch);
+
+            if (SortingOrder <= Parent.SortingOrder)
+                SortingOrder = Parent.SortingOrder + 0.01f;
+
+            foreach (Widget w in Children)
+                w.Draw (spriteBatch);
 
             Origin = Vector2.Clamp (Origin, Vector2.Zero, Vector2.One);
 

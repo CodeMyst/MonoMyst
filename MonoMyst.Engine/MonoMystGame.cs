@@ -19,6 +19,8 @@ namespace MonoMyst.Engine
         protected GraphicsDeviceManager GraphicsDeviceManager;
         internal static ContentManager MMContent;
 
+        private RasterizerState rasterizerState;
+
         public UIHost UI { get; private set; }
 
         public MonoMystGame ()
@@ -33,6 +35,11 @@ namespace MonoMyst.Engine
             Camera = new Camera (GraphicsDevice)
             {
                 Position = Vector2.Zero
+            };
+
+            rasterizerState = new RasterizerState
+            {
+                ScissorTestEnable = true
             };
         }
 
@@ -76,7 +83,7 @@ namespace MonoMyst.Engine
 
             spriteBatch.End ();
 
-            spriteBatch.Begin (sortMode: SpriteSortMode.FrontToBack);
+            spriteBatch.Begin (sortMode: SpriteSortMode.FrontToBack, rasterizerState: rasterizerState);
 
             UI.Draw (spriteBatch);
 
