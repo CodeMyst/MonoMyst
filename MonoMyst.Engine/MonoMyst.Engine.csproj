@@ -66,6 +66,7 @@
     <Compile Include="UI\Canvas.cs" />
     <Compile Include="UI\HorizontalAlignment.cs" />
     <Compile Include="UI\TextHorizontalAlignment.cs" />
+    <Compile Include="UI\TextVerticalAlignment.cs" />
     <Compile Include="UI\TextWrapping.cs" />
     <Compile Include="UI\Thickness.cs" />
     <Compile Include="UI\UIHost.cs" />

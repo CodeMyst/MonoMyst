@@ -14,7 +14,9 @@ namespace MonoMyst.Engine.UI.Widgets
         public float CharacterSpacing = 1f;
 
         public TextWrapping TextWrapping = TextWrapping.WordWrap;
+
         public TextHorizontalAlignment TextHorizontalAlignment = TextHorizontalAlignment.Left;
+        public TextVerticalAlignment TextVerticalAlignment = TextVerticalAlignment.Top;
 
         public override void Initialize ()
         {
@@ -34,6 +36,11 @@ namespace MonoMyst.Engine.UI.Widgets
             if (TextHorizontalAlignment == TextHorizontalAlignment.Center)
             {
                 Position = new Vector2 (Parent.Position.X + (Parent.Scale.X / 2) - (Scale.X / 2), Position.Y);
+            }
+
+            if (TextVerticalAlignment == TextVerticalAlignment.Center)
+            {
+                Position = new Vector2 (Position.X, Parent.Position.Y + (Parent.Scale.Y / 2) - (Scale.Y / 2));
             }
 
             if (TextWrapping == TextWrapping.WordWrap && MeasureString (Text).X > Parent.Scale.X)

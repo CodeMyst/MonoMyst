@@ -34,7 +34,8 @@ namespace MonoMyst.Sandbox
                 Text = "Hello World",
                 Color = Color.Black,
                 TextWrapping = TextWrapping.WordWrap,
-                TextHorizontalAlignment = TextHorizontalAlignment.Center
+                TextHorizontalAlignment = TextHorizontalAlignment.Center,
+                TextVerticalAlignment = TextVerticalAlignment.Center
             };
 
             panel.AddChild (text);
