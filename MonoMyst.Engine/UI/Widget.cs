@@ -125,6 +125,8 @@ namespace MonoMyst.Engine.UI
                     }
                     break;
             }
+
+            spriteBatch.GraphicsDevice.ScissorRectangle = new Rectangle (Position.ToPoint (), Scale.ToPoint ());
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿namespace MonoMyst.Engine.UI
 {
-    public enum HorizontalAlignment
+    public enum TextHorizontalAlignment
     {
-        None,
         Left,
         Center,
-        Right,
-        Stretch
+        Right
     }
 }

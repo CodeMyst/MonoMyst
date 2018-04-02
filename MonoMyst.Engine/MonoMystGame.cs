@@ -19,7 +19,7 @@ namespace MonoMyst.Engine
         protected GraphicsDeviceManager GraphicsDeviceManager;
         internal static ContentManager MMContent;
 
-        private RasterizerState rasterizerState;
+        private RasterizerState rasterizerState = new RasterizerState () { ScissorTestEnable = true };
 
         public UIHost UI { get; private set; }
 
@@ -35,11 +35,6 @@ namespace MonoMyst.Engine
             Camera = new Camera (GraphicsDevice)
             {
                 Position = Vector2.Zero
-            };
-
-            rasterizerState = new RasterizerState
-            {
-                ScissorTestEnable = true
             };
         }
 

@@ -14,6 +14,7 @@ namespace MonoMyst.Engine.UI.Widgets
         public float CharacterSpacing = 1f;
 
         public TextWrapping TextWrapping = TextWrapping.WordWrap;
+        public TextHorizontalAlignment TextHorizontalAlignment = TextHorizontalAlignment.Left;
 
         public override void Initialize ()
         {
@@ -21,47 +22,42 @@ namespace MonoMyst.Engine.UI.Widgets
 
             if (Font == null)
                 Font = MonoMystGame.MMContent.Load<SpriteFont> ("NotoSansRegular");
-            if (string.IsNullOrEmpty (Text))
-                Text = "";
         }
 
         public override void Draw (SpriteBatch spriteBatch)
         {
-            if (Font.Spacing != CharacterSpacing)
-                Font.Spacing = CharacterSpacing;
-
-            Scale = Font.MeasureString (Text) * FontSize;
-
-            Scale = Vector2.Clamp (Scale, Vector2.Zero, Parent.Scale);
-
             base.Draw (spriteBatch);
 
-            if (TextWrapping == TextWrapping.WordWrap)
-            {
-                StringBuilder wrappedText = new StringBuilder ();
+            Scale = Font.MeasureString (Text) * FontSize;
+            Scale = Vector2.Clamp (Scale, Vector2.Zero, Parent.Scale);
 
-                if (Font.MeasureString (Text).X * FontSize > Scale.X)
+            if (TextWrapping == TextWrapping.WordWrap && Font.MeasureString (Text).X * FontSize > Parent.Scale.X)
+            {
+                StringBuilder formattedText = new StringBuilder ();
+
+                string [] words = Text.Split (' ');
+                float lineWidth = 0f;
+                float spaceWidth = MeasureString (" ").X;
+
+                for (int i = 0; i < words.Length; i++)
                 {
-                    string [] words = Text.Split (' ');
-                    for (int i = 0; i < words.Length; i++)
+                    if (lineWidth + spaceWidth + MeasureString (words [i]).X <= Parent.Scale.X)
                     {
-                        wrappedText.Append (words [i] + "\n");
+                        formattedText.Append ($"{words [i]} ");
+                        lineWidth += spaceWidth + MeasureString (words [i]).X;
+                    }
+                    else
+                    {
+                        formattedText.Append ("\n");
+                        formattedText.Append ($"{words [i]} ");
+                        lineWidth = spaceWidth + MeasureString (words [i]).X;
                     }
                 }
-                else
-                {
-                    wrappedText.Append (Text);
-                }
-
-                Scale = Vector2.Clamp (Font.MeasureString (wrappedText)*FontSize, Vector2.Zero, Parent.Scale);
-
-                Rectangle currentRect = spriteBatch.GraphicsDevice.ScissorRectangle;
-                spriteBatch.GraphicsDevice.ScissorRectangle = new Rectangle (Position.ToPoint (), Scale.ToPoint ());
 
                 spriteBatch.DrawString
                     (
                         Font,
-                        wrappedText,
+                        formattedText,
                         Position,
                         Color,
                         Rotation,
@@ -70,10 +66,8 @@ namespace MonoMyst.Engine.UI.Widgets
                         SpriteEffects.None,
                         SortingOrder
                     );
-
-                //spriteBatch.GraphicsDevice.ScissorRectangle = currentRect;
             }
-            else if (TextWrapping == TextWrapping.NoWrap)
+            else
             {
                 spriteBatch.DrawString
                     (
@@ -88,6 +82,16 @@ namespace MonoMyst.Engine.UI.Widgets
                         SortingOrder
                     );
             }
+        }
+
+        /// <summary>
+        /// Returns the size of the string when rendered with the TextBlock's font with regard to font size.
+        /// </summary>
+        /// <param name="text">The text to measure.</param>
+        /// <returns>The size in pixels of the rendered text.</returns>
+        private Vector2 MeasureString (string text)
+        {
+            return Font.MeasureString (text) * FontSize;
         }
     }
 }
