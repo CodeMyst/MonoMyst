@@ -31,7 +31,12 @@ namespace MonoMyst.Engine.UI.Widgets
             Scale = Font.MeasureString (Text) * FontSize;
             Scale = Vector2.Clamp (Scale, Vector2.Zero, Parent.Scale);
 
-            if (TextWrapping == TextWrapping.WordWrap && Font.MeasureString (Text).X * FontSize > Parent.Scale.X)
+            if (TextHorizontalAlignment == TextHorizontalAlignment.Center)
+            {
+                Position = new Vector2 (Parent.Position.X + (Parent.Scale.X / 2) - (Scale.X / 2), Position.Y);
+            }
+
+            if (TextWrapping == TextWrapping.WordWrap && MeasureString (Text).X > Parent.Scale.X)
             {
                 StringBuilder formattedText = new StringBuilder ();
 

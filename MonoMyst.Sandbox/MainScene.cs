@@ -31,9 +31,10 @@ namespace MonoMyst.Sandbox
 
             TextBlock text = new TextBlock
             {
-                Text = "Apartments simplicity or understood do it we. Song such eyes had and off. Removed winding ask explain delight out few behaved lasting.",
+                Text = "Hello World",
                 Color = Color.Black,
-                TextWrapping = TextWrapping.WordWrap
+                TextWrapping = TextWrapping.WordWrap,
+                TextHorizontalAlignment = TextHorizontalAlignment.Center
             };
 
             panel.AddChild (text);
