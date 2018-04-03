@@ -12,7 +12,8 @@
             [
                 "MonoMyst.sln",
                 "/t:build",
-                "/p:Configuration=Debug"
+                "/p:Configuration=Debug",
+                "/verbosity:quiet"
             ],
             "group": "build",
             "problemMatcher":

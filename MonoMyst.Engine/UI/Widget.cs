@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -41,6 +42,8 @@ namespace MonoMyst.Engine.UI
         public Widget Parent { get; private set; }
 
         public List<Widget> Children { get; private set; } = new List<Widget> ();
+
+        public Action OnClicked;
 
         internal void SetParent (Widget parent)
         {
@@ -126,7 +129,7 @@ namespace MonoMyst.Engine.UI
                     break;
             }
 
-            //spriteBatch.GraphicsDevice.ScissorRectangle = new Rectangle (Position.ToPoint (), Scale.ToPoint ());
+            spriteBatch.GraphicsDevice.ScissorRectangle = new Rectangle (Position.ToPoint (), Scale.ToPoint ());
         }
     }
 }

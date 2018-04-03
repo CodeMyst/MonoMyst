@@ -20,27 +20,16 @@ namespace MonoMyst.Sandbox
 
             Canvas main = new Canvas ();
 
-            Panel panel = new Panel
+            Button button = new Button ()
             {
-                Scale = new Vector2 (200, 200),
-                Color = Color.White,
-                VerticalAlignment = VerticalAlignment.Center,
+                Text = "Button",
+                Color = Color.MonoGameOrange,
                 HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
                 Origin = new Vector2 (0.5f, 0.5f)
             };
 
-            TextBlock text = new TextBlock
-            {
-                Text = "Hello World",
-                Color = Color.Black,
-                TextWrapping = TextWrapping.WordWrap,
-                TextHorizontalAlignment = TextHorizontalAlignment.Center,
-                TextVerticalAlignment = TextVerticalAlignment.Center
-            };
-
-            panel.AddChild (text);
-
-            main.AddChild (panel);
+            main.AddChild (button);
 
             UI.AddCanvas (main);
         }

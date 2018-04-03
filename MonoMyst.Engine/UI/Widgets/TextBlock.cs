@@ -24,6 +24,8 @@ namespace MonoMyst.Engine.UI.Widgets
 
             if (Font == null)
                 Font = MonoMystGame.MMContent.Load<SpriteFont> ("NotoSansRegular");
+            if (Text == null)
+                Text = "";
         }
 
         public override void Draw (SpriteBatch spriteBatch)
@@ -101,7 +103,7 @@ namespace MonoMyst.Engine.UI.Widgets
         /// </summary>
         /// <param name="text">The text to measure.</param>
         /// <returns>The size in pixels of the rendered text.</returns>
-        private Vector2 MeasureString (string text)
+        public Vector2 MeasureString (string text)
         {
             return Font.MeasureString (text) * FontSize;
         }
