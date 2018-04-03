@@ -75,6 +75,7 @@
     <Compile Include="UI\Widgets\Panel.cs" />
     <Compile Include="UI\Widgets\TextBlock.cs" />
     <Compile Include="UI\Widgets\Button.cs" />
+    <Compile Include="UI\IClickable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -131,7 +132,8 @@
     </None>
     <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
       <Link>libopenal.1.dylib</Link>
-      <CopyToOutputDirectory>Prese<Content Include="UI\Widgets\Button.cs" />rveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Prese                        <Content Include="UI\Widgets\Button.cs" />
+</CopyToOutputDirectory>
     </None>
     <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
       <Link>MonoGame.Framework.dll.config</Link>

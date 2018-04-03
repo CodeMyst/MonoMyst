@@ -1,3 +1,5 @@
+using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -5,7 +7,7 @@ using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine.UI.Widgets
 {
-    public class Button : Widget
+    public class Button : Widget, IClickable
     {
         public string Text
         {
@@ -21,6 +23,8 @@ namespace MonoMyst.Engine.UI.Widgets
 
         private TextBlock textBlock;
 
+        public Action OnClick;
+
         public Button ()
         {
             textBlock = new TextBlock
@@ -29,6 +33,11 @@ namespace MonoMyst.Engine.UI.Widgets
                 TextVerticalAlignment = TextVerticalAlignment.Center   
             };
             AddChild (textBlock);
+        }
+
+        public void OnClicked ()
+        {
+            OnClick?.Invoke ();
         }
 
         public override void Draw (SpriteBatch spriteBatch)

@@ -50,8 +50,8 @@ namespace MonoMyst.Engine.UI
             if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
             {
                 Widget widgetAtMousePosition = GetWidgetAtPosition (currentMouseState.Position.ToVector2 ());
-                if (widgetAtMousePosition != null)
-                    widgetAtMousePosition.OnClicked?.Invoke ();
+                if (widgetAtMousePosition != null && widgetAtMousePosition is IClickable clickable)
+                    clickable.OnClicked ();
             }
 
             previousMouseState = currentMouseState;

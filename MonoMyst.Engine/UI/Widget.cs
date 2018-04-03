@@ -43,8 +43,6 @@ namespace MonoMyst.Engine.UI
 
         public List<Widget> Children { get; private set; } = new List<Widget> ();
 
-        public Action OnClicked;
-
         internal void SetParent (Widget parent)
         {
             Parent = parent;
