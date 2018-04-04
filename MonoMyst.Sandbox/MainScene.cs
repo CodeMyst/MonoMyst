@@ -20,16 +20,15 @@ namespace MonoMyst.Sandbox
 
             Canvas main = new Canvas ();
 
-            Button button = new Button ()
+            Panel panel = new Panel
             {
-                Text = "Button",
+                Scale = new Vector2 (100, 100),
                 Color = Color.MonoGameOrange,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Origin = new Vector2 (0.5f, 0.5f)
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Bottom
             };
 
-            main.AddChild (button);
+            main.AddChild (panel);
 
             UI.AddCanvas (main);
         }

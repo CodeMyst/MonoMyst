@@ -81,21 +81,25 @@ namespace MonoMyst.Engine.UI
                     {
                         Position = new Vector2 (Parent.Position.X, Position.Y);
                         Scale = new Vector2 (Parent.Scale.X, Scale.Y);
+                        Origin.X = 0;
                     } break;
 
                 case HorizontalAlignment.Left:
                     {
                         Position = new Vector2 (Parent.Position.X - (Scale.X * Origin.X), Position.Y);
+                        Origin.X = 0;
                     } break;
 
                 case HorizontalAlignment.Center:
                     {
                         Position = new Vector2 ((Parent.Scale.X / 2) - (Scale.X * Origin.X), Position.Y);
+                        Origin.X = 0.5f;
                     } break;
 
                 case HorizontalAlignment.Right:
                     {
                         Position = new Vector2 ((Parent.Scale.X) - (Scale.X * Origin.X), Position.Y);
+                        Origin.X = 1f;
                     } break;
             }
 
@@ -105,24 +109,28 @@ namespace MonoMyst.Engine.UI
                     {
                         Position = new Vector2 (Position.X, Parent.Position.Y);
                         Scale = new Vector2 (Scale.X, Parent.Scale.Y);
+                        Origin.Y = 0f;
                     }
                     break;
 
                 case VerticalAlignment.Top:
                     {
                         Position = new Vector2 (Position.X, Parent.Position.Y - (Scale.Y * Origin.Y));
+                        Origin.Y = 0f;
                     }
                     break;
 
                 case VerticalAlignment.Center:
                     {
                         Position = new Vector2 (Position.X, (Parent.Scale.Y / 2) - (Scale.Y * Origin.Y));
+                        Origin.Y = 0.5f;
                     }
                     break;
 
                 case VerticalAlignment.Bottom:
                     {
                         Position = new Vector2 (Position.X, Parent.Scale.Y - (Scale.Y * Origin.Y));
+                        Origin.Y = 1f;
                     }
                     break;
             }
