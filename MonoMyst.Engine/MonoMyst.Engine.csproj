@@ -76,6 +76,7 @@
     <Compile Include="UI\Widgets\TextBlock.cs" />
     <Compile Include="UI\Widgets\Button.cs" />
     <Compile Include="UI\IClickable.cs" />
+    <Compile Include="UI\Overflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
