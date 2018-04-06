@@ -18,26 +18,30 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            Canvas main = new Canvas ();
+            Canvas main = new Canvas ()
+            {
+                Padding = new Thickness (20)
+            };
 
             Panel panel = new Panel
             {
                 Scale = new Vector2 (200, 200),
                 Color = new Color (33, 33, 33),
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
                 Padding = new Thickness (20),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
             };
 
-            Panel child1 = new Panel
+            Panel child = new Panel
             {
                 Scale = new Vector2 (50, 50),
                 Color = new Color (123, 123, 123),
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Bottom
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                Margin = new Thickness (500)
             };
 
-            panel.AddChild (child1);
+            panel.AddChild (child);
 
             main.AddChild (panel);
 

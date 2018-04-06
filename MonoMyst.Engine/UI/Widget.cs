@@ -85,17 +85,17 @@ namespace MonoMyst.Engine.UI
                 case HorizontalAlignment.Stretch:
                     {
                         Origin.X = 0;
-                        Position = new Vector2 (Parent.Position.X + Parent.Padding.Left, Position.Y);
-                        Scale = new Vector2 (Parent.Scale.X - (Parent.Padding.Right * 2), Scale.Y);
+                        Position = new Vector2 (Parent.Position.X + Parent.Padding.Left + Margin.Left, Position.Y);
+                        Scale = new Vector2 (Parent.Scale.X - (Parent.Padding.Right * 2) - (Margin.Right * 2), Scale.Y);
                     } break;
 
                 case HorizontalAlignment.Left:
                     {
                         Origin.X = 0;
-                        Position = new Vector2 (Parent.Position.X - (Scale.X * Origin.X) + Parent.Padding.Left, Position.Y);
-                        if (Position.X + Scale.X > Parent.Position.X + Parent.Scale.X - Parent.Padding.Right)
+                        Position = new Vector2 (Parent.Position.X - (Scale.X * Origin.X) + Parent.Padding.Left + Margin.Left, Position.Y);
+                        if (Position.X + Scale.X > Parent.Position.X + Parent.Scale.X - Margin.Right - Parent.Padding.Right)
                         {
-                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Parent.Padding.Right), 0f);
+                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Margin.Right - Parent.Padding.Right), 0f);
                         }
                     } break;
 
@@ -103,24 +103,24 @@ namespace MonoMyst.Engine.UI
                     {
                         Origin.X = 0.5f;
                         Position = new Vector2 (Parent.Position.X + (Parent.Scale.X / 2) - (Scale.X * Origin.X), Position.Y);
-                        if (Position.X < Parent.Position.X + Parent.Padding.Left)
+                        if (Position.X < Parent.Position.X + Parent.Padding.Left + Margin.Left)
                         {
-                            Position = new Vector2 (Parent.Position.X + Parent.Padding.Left, Position.Y);
+                            Position = new Vector2 (Parent.Position.X + Parent.Padding.Left + Margin.Left, Position.Y);
                         }
-                        if (Position.X + Scale.X > Parent.Position.X + Parent.Scale.X - Parent.Padding.Right)
+                        if (Position.X + Scale.X > Parent.Position.X + Parent.Scale.X - Margin.Right - Parent.Padding.Right)
                         {
-                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Parent.Padding.Right), 0f);
+                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Margin.Right - Parent.Padding.Right), 0f);
                         }
                     } break;
 
                 case HorizontalAlignment.Right:
                     {
                         Origin.X = 1f;
-                        Position = new Vector2 (Parent.Position.X + (Parent.Scale.X) - (Scale.X * Origin.X) - (Parent.Padding.Right), Position.Y);
-                        if (Position.X < Parent.Position.X + Parent.Padding.Left)
+                        Position = new Vector2 (Parent.Position.X + (Parent.Scale.X) - (Scale.X * Origin.X) - (Parent.Padding.Right) - Margin.Right, Position.Y);
+                        if (Position.X < Parent.Position.X + Parent.Padding.Left + Margin.Left)
                         {
-                            Position = new Vector2 (Parent.Position.X + Parent.Padding.Left, Position.Y);
-                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Parent.Padding.Right), 0f);
+                            Position = new Vector2 (Parent.Position.X + Parent.Padding.Left + Margin.Left, Position.Y);
+                            Scale -= new Vector2 ((Position.X + Scale.X) - (Parent.Position.X + Parent.Scale.X - Parent.Padding.Right - Margin.Right), 0f);
                         }
                     } break;
             }
@@ -130,18 +130,18 @@ namespace MonoMyst.Engine.UI
                 case VerticalAlignment.Stretch:
                     {
                         Origin.Y = 0f;
-                        Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top);
-                        Scale = new Vector2 (Scale.X, Parent.Scale.Y - (Parent.Padding.Bottom * 2));
+                        Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top + Margin.Top);
+                        Scale = new Vector2 (Scale.X, Parent.Scale.Y - (Parent.Padding.Bottom * 2) - (Margin.Bottom * 2));
                     }
                     break;
 
                 case VerticalAlignment.Top:
                     {
                         Origin.Y = 0f;
-                        Position = new Vector2 (Position.X, Parent.Position.Y - (Scale.Y * Origin.Y) + Parent.Padding.Top);
-                        if (Position.Y + Scale.Y > Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom)
+                        Position = new Vector2 (Position.X, Parent.Position.Y - (Scale.Y * Origin.Y) + Parent.Padding.Top + Margin.Top);
+                        if (Position.Y + Scale.Y > Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom - Margin.Right)
                         {
-                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom));
+                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom - Margin.Bottom));
                         }
                     }
                     break;
@@ -150,13 +150,13 @@ namespace MonoMyst.Engine.UI
                     {
                         Origin.Y = 0.5f;
                         Position = new Vector2 (Position.X, Parent.Position.Y + (Parent.Scale.Y / 2) - (Scale.Y * Origin.Y));
-                        if (Position.Y < Parent.Position.Y + Parent.Padding.Top)
+                        if (Position.Y < Parent.Position.Y + Parent.Padding.Top + Margin.Top)
                         {
-                            Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top);
+                            Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top + Margin.Top);
                         }
-                        if (Position.Y + Scale.Y > Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom)
+                        if (Position.Y + Scale.Y > Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom - Margin.Bottom)
                         {
-                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom));
+                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom - Margin.Bottom));
                         }
                     }
                     break;
@@ -164,11 +164,11 @@ namespace MonoMyst.Engine.UI
                 case VerticalAlignment.Bottom:
                     {
                         Origin.Y = 1f;
-                        Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Scale.Y - (Scale.Y * Origin.Y) - Parent.Padding.Bottom);
-                        if (Position.Y < Parent.Position.Y + Parent.Padding.Top)
+                        Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Scale.Y - (Scale.Y * Origin.Y) - Parent.Padding.Bottom - Margin.Bottom);
+                        if (Position.Y < Parent.Position.Y + Parent.Padding.Top + Margin.Top)
                         {
-                            Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top);
-                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom));
+                            Position = new Vector2 (Position.X, Parent.Position.Y + Parent.Padding.Top + Margin.Top);
+                            Scale -= new Vector2 (0f, (Position.Y + Scale.Y) - (Parent.Position.Y + Parent.Scale.Y - Parent.Padding.Bottom - Margin.Bottom));
                         }
                     }
                     break;
