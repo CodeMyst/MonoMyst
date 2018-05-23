@@ -1,0 +1,18 @@
+{
+   "version": "0.2.0",
+   "configurations":
+    [
+        {
+            "name": "MonoMyst.Sandbox",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/MonoMyst.Sandbox/bin/Debug/netcoreapp2.0/MonoMyst.Sandbox.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/MonoMyst.Sandbox",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
