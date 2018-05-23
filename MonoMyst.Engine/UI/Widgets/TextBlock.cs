@@ -2,10 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-<<<<<<< HEAD
 using MonoMyst.Engine.Graphics;
-=======
->>>>>>> 97016d8cd8153bc913268eb2ff88d4199ba7b6e5
 
 namespace MonoMyst.Engine.UI.Widgets
 {
