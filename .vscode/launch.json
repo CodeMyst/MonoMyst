@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
    "version": "0.2.0",
    "configurations":
     [
@@ -13,6 +14,23 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+=======
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations":
+    [
+        {
+            "name": "MonoMyst.Sandbox",
+            "type": "mono",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRoot}/MonoMyst.Sandbox/bin/DesktopGL/AnyCPU/Debug/MonoMyst.Sandbox.exe",
+            "args": [],
+            "cwd": "${workspaceRoot}/MonoMyst.Sandbox/bin/DesktopGL/AnyCPU/Debug/",
+            "console": "internalConsole"
+>>>>>>> 97016d8cd8153bc913268eb2ff88d4199ba7b6e5
         }
     ]
 }
