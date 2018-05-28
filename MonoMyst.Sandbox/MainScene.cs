@@ -26,7 +26,7 @@ namespace MonoMyst.Sandbox
                 Padding = new Thickness (20)
             };
 
-            Panel panel = new Panel
+			panel = new Panel
             {
                 Scale = new Vector2 (200, 200),
                 Color = new Color (33, 33, 33),
