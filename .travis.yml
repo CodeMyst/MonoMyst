@@ -2,5 +2,10 @@ language: csharp
 solution: MonoMyst.sln
 mono: none
 dotnet: 2.1.200
-script:
+
+install:
   - dotnet restore
+
+script:
+  - dotnet build
+  - dotnet test MonoMyst.Tests/MonoMyst.Tests.csproj
