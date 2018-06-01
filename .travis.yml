@@ -3,8 +3,5 @@ solution: MonoMyst.sln
 mono: none
 dotnet: 2.1.200
 
-install:
-  - dotnet restore
-
 script:
-  - dotnet build
+  - dotnet restore
