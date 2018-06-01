@@ -17,10 +17,12 @@ namespace MonoMyst.Engine
 
             public GraphicsDevice GraphicsDevice { get; private set; }
 
+#pragma warning disable CS0067
             public event EventHandler<EventArgs> DeviceCreated;
             public event EventHandler<EventArgs> DeviceDisposing;
             public event EventHandler<EventArgs> DeviceReset;
             public event EventHandler<EventArgs> DeviceResetting;
+#pragma warning restore CS0067
         }
 
         class FakeServiceProvider : IServiceProvider
