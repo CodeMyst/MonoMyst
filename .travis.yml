@@ -1,7 +1,7 @@
 language: csharp
 solution: MonoMyst.sln
 mono: latest
-dotnet: 2.1.200
+dotnet: 2.1.300
 
 script:
   - dotnet restore
