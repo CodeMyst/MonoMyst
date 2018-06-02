@@ -19,8 +19,10 @@ namespace MonoMyst.Engine.ECS
         public Entity Parent { get; private set; }
         private List<Entity> children = new List<Entity> ();
 
-        protected Entity ()
+        protected Entity (string name, Scene scene)
         {
+            Name = name;
+            scene.RegisterEntity (this);
             Transform = new Transform (Vector2.Zero, 0f, Vector2.One);
         }
 
@@ -40,27 +42,6 @@ namespace MonoMyst.Engine.ECS
         {
             get { return Transform.Scale; }
             set { Transform = new Transform (Transform.Position, Transform.Rotation, value); }
-        }
-
-        /// <summary>
-        /// Creates an entity that's tied to the specified scene.
-        /// </summary>
-        public static Entity CreateSceneEntity (string name, Scene scene)
-        {
-            Entity e = new Entity
-            {
-                Name = name
-            };
-            scene.RegisterEntity (e);
-            return e;
-        }
-
-        /// <summary>
-        /// Creates an entity that's tied to the current running scene
-        /// </summary>
-        public static Entity CreateSceneEntity (string name)
-        {
-            return CreateSceneEntity (name, Scene.Current);
         }
 
         public T AddComponent<T> () where T : Component, new ()

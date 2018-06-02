@@ -7,7 +7,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/MonoMyst.Sandbox/bin/Debug/netcoreapp2.0/MonoMyst.Sandbox.dll",
+            "program": "${workspaceFolder}/MonoMyst.Sandbox/bin/Debug/netcoreapp2.1/MonoMyst.Sandbox.dll",
             "args": [],
             "cwd": "${workspaceFolder}/MonoMyst.Sandbox",
             "console": "internalConsole",
