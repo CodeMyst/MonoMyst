@@ -1,5 +1,4 @@
 ﻿using MonoMyst.Engine;
-using MonoMyst.Engine.ECS;
 
 namespace MonoMyst.Sandbox
 {
@@ -16,9 +15,6 @@ namespace MonoMyst.Sandbox
         protected override void Initialize ()
         {
             base.Initialize ();
-
-            Scene scene = new MainScene (this, GraphicsDeviceManager.GraphicsDevice);
-            NextScene (scene);
         }
     }
 }

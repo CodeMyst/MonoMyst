@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine.UI.Widgets
@@ -19,7 +20,7 @@ namespace MonoMyst.Engine.UI.Widgets
         public TextHorizontalAlignment TextHorizontalAlignment = TextHorizontalAlignment.Left;
         public TextVerticalAlignment TextVerticalAlignment = TextVerticalAlignment.Top;
 
-        public override void Initialize ()
+        internal protected override void Initialize ()
         {
             base.Initialize ();
 
@@ -29,24 +30,24 @@ namespace MonoMyst.Engine.UI.Widgets
                 Text = "";
         }
 
-        public override void Draw (SpriteBatch spriteBatch)
+        internal protected override void Draw (SpriteBatch spriteBatch)
         {
             base.Draw (spriteBatch);
 
-            Scale = Font.MeasureString (Text) * FontSize;
-            Scale = Vector2.Clamp (Scale, Vector2.Zero, Parent.Scale);
+            Size = Font.MeasureString (Text) * FontSize;
+            Size = Vector2.Clamp (Size, Vector2.Zero, Parent.Size);
 
             if (TextHorizontalAlignment == TextHorizontalAlignment.Center)
             {
-                Position = new Vector2 (Parent.Position.X + (Parent.Scale.X / 2) - (Scale.X / 2), Position.Y);
+                Position = new Vector2 (Parent.Position.X + (Parent.Size.X / 2) - (Size.X / 2), Position.Y);
             }
 
             if (TextVerticalAlignment == TextVerticalAlignment.Center)
             {
-                Position = new Vector2 (Position.X, Parent.Position.Y + (Parent.Scale.Y / 2) - (Scale.Y / 2));
+                Position = new Vector2 (Position.X, Parent.Position.Y + (Parent.Size.Y / 2) - (Size.Y / 2));
             }
 
-            if (TextWrapping == TextWrapping.WordWrap && MeasureString (Text).X > Parent.Scale.X)
+            if (TextWrapping == TextWrapping.WordWrap && MeasureString (Text).X > Parent.Size.X)
             {
                 StringBuilder formattedText = new StringBuilder ();
 
@@ -56,7 +57,7 @@ namespace MonoMyst.Engine.UI.Widgets
 
                 for (int i = 0; i < words.Length; i++)
                 {
-                    if (lineWidth + spaceWidth + MeasureString (words [i]).X <= Parent.Scale.X)
+                    if (lineWidth + spaceWidth + MeasureString (words [i]).X <= Parent.Size.X)
                     {
                         formattedText.Append ($"{words [i]} ");
                         lineWidth += spaceWidth + MeasureString (words [i]).X;

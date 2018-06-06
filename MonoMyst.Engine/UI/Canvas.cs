@@ -5,7 +5,7 @@ namespace MonoMyst.Engine.UI
 {
     public class Canvas : Widget
     {
-        public override void Initialize ()
+        internal protected override void Initialize ()
         {
             base.Initialize ();
 
@@ -14,9 +14,9 @@ namespace MonoMyst.Engine.UI
             Color = Color.Transparent;
         }
 
-        public override void Draw (SpriteBatch spriteBatch)
+        internal protected override void Draw (SpriteBatch spriteBatch)
         {
-            Scale = spriteBatch.GraphicsDevice.Viewport.Bounds.Size.ToVector2 ();
+            Size = spriteBatch.GraphicsDevice.Viewport.Bounds.Size.ToVector2 ();
             Position = Vector2.Zero;
 
             foreach (Widget w in Children)

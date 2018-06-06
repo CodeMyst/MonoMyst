@@ -40,16 +40,16 @@ namespace MonoMyst.Engine.UI.Widgets
             OnClick?.Invoke ();
         }
 
-        public override void Draw (SpriteBatch spriteBatch)
+        internal protected override void Draw (SpriteBatch spriteBatch)
         {
             base.Draw (spriteBatch);
 
-            Scale = textBlock.MeasureString (textBlock.Text) + new Vector2 (10, 10);
+            Size = textBlock.MeasureString (textBlock.Text) + new Vector2 (10, 10);
 
             spriteBatch.Draw
                 (
                     MonoMystGame.GraphicUtilities.Rectangle,
-                    new Rectangle (Position.ToPoint (), Scale.ToPoint ()),
+                    new Rectangle (Position.ToPoint (), Size.ToPoint ()),
                     null,
                     Color,
                     Rotation,

@@ -1,22 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine.UI;
-using MonoMyst.Engine.ECS;
-using System.IO;
-using System;
-using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
 using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine
 {
     public class MonoMystGame : Game
     {
-        public static Scene Scene { get; private set; }
-
         private SpriteBatch spriteBatch;
 
         public static Camera Camera { get; private set; }
@@ -28,8 +20,6 @@ namespace MonoMyst.Engine
         public static XNBContentManager EmbeddedContent { get; private set; }
 
         public static GraphicUtilities GraphicUtilities { get; private set; }
-
-        public UIHost UI { get; private set; }
 
         public MonoMystGame ()
         {
@@ -54,8 +44,6 @@ namespace MonoMyst.Engine
 
             spriteBatch = new SpriteBatch (GraphicsDevice);
 
-            UI = new UIHost (this);            
-
             EmbeddedContent = new XNBContentManager (GraphicsDevice);
             GraphicUtilities = new GraphicUtilities ();
         }
@@ -65,9 +53,6 @@ namespace MonoMyst.Engine
             base.Update (gameTime);
 
             float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
-            Scene.Update (deltaTime);
-
-            UI.Update (deltaTime);
 
             if (Keyboard.GetState ().IsKeyDown (Keys.Left))
                 Camera.Position.X -= 50f * deltaTime;
@@ -81,31 +66,21 @@ namespace MonoMyst.Engine
 
         protected override void Draw (GameTime gameTime)
         {
-            GraphicsDevice.Clear (Scene.ClearColor);
+            GraphicsDevice.Clear (MonoMystColors.Nero);
 
             spriteBatch.Begin (transformMatrix: Camera.Transform);
 
-            Scene.Draw (spriteBatch);
+            // Scene draw
 
             spriteBatch.End ();
 
             spriteBatch.Begin (sortMode: SpriteSortMode.FrontToBack, rasterizerState: rasterizerState);
 
-            UI.Draw (spriteBatch);
+            // UI draw
 
             spriteBatch.End ();
 
             base.Draw (gameTime);
-        }
-
-        /// <summary>
-        /// Switches to the next scene.
-        /// </summary>
-        public void NextScene (Scene scene)
-        {
-            Scene = scene;
-            Scene.Current = Scene;
-            Scene.Initialize ();
         }
     }
 }

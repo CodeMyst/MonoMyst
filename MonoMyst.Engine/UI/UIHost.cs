@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.UI
 {
-    public class UIHost : MonoMystObject
+    public class UIHost
     {
         protected Game Game;
 
@@ -34,13 +34,13 @@ namespace MonoMyst.Engine.UI
             canvas.Initialize ();
         }
 
-        public override void Draw (SpriteBatch spriteBatch)
+        internal protected virtual void Draw (SpriteBatch spriteBatch)
         {
             foreach (Canvas c in canvasses)
                 c.Draw (spriteBatch);
         }
 
-        public override void Update (float deltaTime)
+        internal protected virtual void Update (float deltaTime)
         {
             foreach (Canvas c in canvasses)
                 c.Update (deltaTime);
@@ -63,7 +63,7 @@ namespace MonoMyst.Engine.UI
 
             foreach (Canvas c in canvasses)
                 foreach (Widget w in c.Children)
-                    if (new Rectangle (w.Position.ToPoint (), w.Scale.ToPoint ()).Contains (position))
+                    if (new Rectangle (w.Position.ToPoint (), w.Size.ToPoint ()).Contains (position))
                         if (widget == null || (widget != null && w.SortingOrder > widget.SortingOrder))
                             widget = w;
 
