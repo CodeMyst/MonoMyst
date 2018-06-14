@@ -71,7 +71,7 @@ namespace MonoMyst.Engine
 
         protected override void Draw (GameTime gameTime)
         {
-            GraphicsDevice.Clear (MonoMystColors.Nero);
+            GraphicsDevice.Clear (CurrentScene.ClearColor);
 
             spriteBatch.Begin (transformMatrix: Camera.Transform);
 

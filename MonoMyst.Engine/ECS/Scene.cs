@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoMyst.Engine.ECS
@@ -13,6 +14,8 @@ namespace MonoMyst.Engine.ECS
         public EntityPool Entities { get; private set; } = new EntityPool ();
 
         public List<ComponentSystem> Systems { get; } = new List<ComponentSystem> ();
+
+        public Color ClearColor { get; set; } = MonoMystColors.Nero;
 
         protected internal override void Initialize ()
         {

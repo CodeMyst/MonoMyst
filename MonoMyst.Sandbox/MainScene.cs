@@ -16,14 +16,12 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            Console.WriteLine("MainScene.Initialize ()");
-
             SpriteRenderSystem spriteRenderSystem = new SpriteRenderSystem (Entities);
             
             Entity dino = new Entity ("Dino");
 
             TransformComponent transform = dino.AddComponent<TransformComponent> ();
-            transform.Position = new Vector2 (100, 100);
+            transform.Position = new Vector2 (100, 400);
 
             SpriteComponent sprite = dino.AddComponent<SpriteComponent> ();
             sprite.Sprite = Game1.GraphicUtilities.Rectangle;

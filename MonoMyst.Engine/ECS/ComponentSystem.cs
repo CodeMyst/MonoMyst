@@ -49,7 +49,6 @@ namespace MonoMyst.Engine.ECS
         {
             Entities.Clear ();
             Entities.AddRange (GetCompatibleEntities (entities));
-            Console.WriteLine($"{GetType ().Name}.EntitiesChanged, {Entities.Count} entities in this system.");
         }
 
         public IEnumerable<Entity> GetCompatibleEntities (IEnumerable<Entity> entities)
