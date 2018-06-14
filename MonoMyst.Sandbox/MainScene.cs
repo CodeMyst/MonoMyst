@@ -28,7 +28,7 @@ namespace MonoMyst.Sandbox
             SpriteComponent sprite = dino.AddComponent<SpriteComponent> ();
             sprite.Sprite = Game1.GraphicUtilities.Rectangle;
             sprite.Color = MonoMystColors.Mystge;
-            sprite.Size = new Vector2 (1, 1);
+            sprite.Size = new Vector2 (50, 50);
 
             Console.WriteLine(Entities.Count);
         }
