@@ -15,7 +15,7 @@ namespace MonoMyst.Engine.ECS
 
         public List<ComponentSystem> Systems { get; } = new List<ComponentSystem> ();
 
-        public Color ClearColor { get; set; } = MonoMystColors.Nero;
+        public Color ClearColor { get; set; } = MColors.Nero;
 
         protected internal override void Initialize ()
         {
