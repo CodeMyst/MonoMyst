@@ -20,7 +20,7 @@ namespace MonoMyst.Engine.Graphics
         {
             T result = default (T);
 
-            Assembly assembly = typeof (MonoMystGame).GetTypeInfo ().Assembly;
+            Assembly assembly = typeof (MGame).GetTypeInfo ().Assembly;
 
             Stream stream = assembly.GetManifestResourceStream (streamName);
             using (MemoryStream ms = new MemoryStream ())
@@ -30,7 +30,7 @@ namespace MonoMyst.Engine.Graphics
                 while ((read = stream.Read (buffer, 0, buffer.Length)) > 0)
                     ms.Write (buffer, 0, read);
 
-                result = MonoMystGame.EmbeddedContent.Load<T> (assetName, ms);
+                result = MGame.EmbeddedContent.Load<T> (assetName, ms);
             }
 
             return result;

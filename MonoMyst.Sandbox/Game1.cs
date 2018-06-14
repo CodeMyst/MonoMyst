@@ -2,7 +2,7 @@
 
 namespace MonoMyst.Sandbox
 {
-    public class Game1 : MonoMystGame
+    public class Game1 : MGame
     {
         public Game1 () : base ()
         {
@@ -15,6 +15,9 @@ namespace MonoMyst.Sandbox
         protected override void Initialize ()
         {
             base.Initialize ();
+
+            var scene = new MainScene ();
+            NextScene (scene);
         }
     }
 }

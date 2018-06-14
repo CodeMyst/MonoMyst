@@ -19,7 +19,7 @@ namespace MonoMyst.Engine.UI.Widgets
 
             spriteBatch.Draw
                 (
-                    MonoMystGame.GraphicUtilities.Rectangle,
+                    MGame.GraphicUtilities.Rectangle,
                     new Rectangle (Position.ToPoint (), Size.ToPoint ()),
                     null,
                     Color,

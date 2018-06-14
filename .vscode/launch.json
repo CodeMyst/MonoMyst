@@ -12,7 +12,10 @@
             "cwd": "${workspaceFolder}/MonoMyst.Sandbox",
             "console": "internalConsole",
             "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart"
+            "internalConsoleOptions": "openOnSessionStart",
+            "logging": {
+                "moduleLoad": false
+            }
         }
     ]
 }

@@ -25,7 +25,7 @@ namespace MonoMyst.Engine.UI.Widgets
             base.Initialize ();
 
             if (Font == null)
-                Font = MonoMystGame.GraphicUtilities.NotoSansRegular;
+                Font = MGame.GraphicUtilities.NotoSansRegular;
             if (Text == null)
                 Text = "";
         }

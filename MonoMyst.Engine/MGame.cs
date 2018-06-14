@@ -3,12 +3,15 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine.UI;
+using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine
 {
-    public class MonoMystGame : Game
+    public class MGame : Game
     {
+        public static Scene CurrentScene { get; private set; }
+
         private SpriteBatch spriteBatch;
 
         public static Camera Camera { get; private set; }
@@ -21,7 +24,7 @@ namespace MonoMyst.Engine
 
         public static GraphicUtilities GraphicUtilities { get; private set; }
 
-        public MonoMystGame ()
+        public MGame ()
         {
             GraphicsDeviceManager = new GraphicsDeviceManager (this);
 
@@ -62,6 +65,8 @@ namespace MonoMyst.Engine
                 Camera.Position.X += 50f * deltaTime;
             if (Keyboard.GetState ().IsKeyDown (Keys.Down))
                 Camera.Position.Y += 50f * deltaTime;
+
+            CurrentScene.Update (deltaTime);
         }
 
         protected override void Draw (GameTime gameTime)
@@ -70,7 +75,7 @@ namespace MonoMyst.Engine
 
             spriteBatch.Begin (transformMatrix: Camera.Transform);
 
-            // Scene draw
+            CurrentScene.Draw (spriteBatch);
 
             spriteBatch.End ();
 
@@ -81,6 +86,12 @@ namespace MonoMyst.Engine
             spriteBatch.End ();
 
             base.Draw (gameTime);
+        }
+
+        protected void NextScene (Scene scene)
+        {
+            CurrentScene = scene;
+            CurrentScene.Initialize ();
         }
     }
 }
