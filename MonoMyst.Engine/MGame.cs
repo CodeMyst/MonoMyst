@@ -57,15 +57,6 @@ namespace MonoMyst.Engine
 
             float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (Keyboard.GetState ().IsKeyDown (Keys.Left))
-                Camera.Position.X -= 50f * deltaTime;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Up))
-                Camera.Position.Y -= 50f * deltaTime;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Right))
-                Camera.Position.X += 50f * deltaTime;
-            if (Keyboard.GetState ().IsKeyDown (Keys.Down))
-                Camera.Position.Y += 50f * deltaTime;
-
             CurrentScene.Update (deltaTime);
         }
 
