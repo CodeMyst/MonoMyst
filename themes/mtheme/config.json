@@ -1,0 +1,10 @@
+{
+    "favicon": "<theme_url>img/favicon.png",
+    "css": [
+        "<theme_url>css/theme.css"
+    ],
+    "js": [],
+    "fonts": [
+        "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700"
+    ]
+}
