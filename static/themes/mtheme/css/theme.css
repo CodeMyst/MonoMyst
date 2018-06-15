@@ -307,7 +307,7 @@ html {
 
 @media screen and (min-width:768px) {
     body {
-        background-color: #82becd
+        background-color: #232323
     }
     .Navbar {
         position: fixed;
@@ -1243,7 +1243,7 @@ code {
 
 .HomepageButtons {
     padding: 20px 0;
-    background-color: #c5c5cb;
+    background-color: #232323;
     text-align: center
 }
 
@@ -1254,8 +1254,7 @@ code {
     opacity: .8;
     margin: 0 10px;
     text-transform: uppercase;
-    border: 5px solid #3f4657;
-    font-family: Roboto Slab, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Ubuntu', Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 700;
     background-image: none;
     -webkit-filter: none;
@@ -1280,12 +1279,12 @@ code {
 }
 
 .HomepageButtons .Button--hero.Button--primary {
-    background-color: #3f4657;
-    color: #f7f7f7
+    background-color: #fe943a;
+    color: #232323
 }
 
 .HomepageContent {
-    background-color: #fff;
+    background-color: #232323;
     padding: 40px 0
 }
 
@@ -1339,9 +1338,9 @@ code {
 }
 
 .HomepageFooter {
-    background-color: #3f4657;
+    background-color: #232323;
     border-radius: 0;
-    color: #82becd;
+    color: #fe943a;
     border: none;
     box-shadow: none
 }
