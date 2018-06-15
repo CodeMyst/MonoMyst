@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine;
+using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
+using MonoMyst.Engine.UI.Widgets;
 using MonoMyst.Engine.ECS.Systems;
 using MonoMyst.Engine.ECS.Components;
 
@@ -27,8 +29,18 @@ namespace MonoMyst.Sandbox
             sprite.Sprite = Game1.GraphicUtilities.Rectangle;
             sprite.Color = MColors.Mystge;
             sprite.Size = new Vector2 (50, 50);
+        
+            Canvas canvas = new Canvas ();
 
-            Console.WriteLine(Entities.Count);
+            TextBlock text = new TextBlock
+            {
+                Text = "Text",
+                Color = Color.White
+            };
+
+            canvas.AddChild (text);
+
+            UI.AddCanvas (canvas);
         }
     }
 }

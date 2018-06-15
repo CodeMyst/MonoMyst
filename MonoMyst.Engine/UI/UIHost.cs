@@ -9,24 +9,10 @@ namespace MonoMyst.Engine.UI
 {
     public class UIHost
     {
-        protected Game Game;
-
-        protected ContentManager Content;
-
         private List<Canvas> canvasses = new List<Canvas> ();
 
         private MouseState currentMouseState;
         private MouseState previousMouseState;
-
-        public UIHost (Game game)
-        {
-            Game = game;
-
-            Content = new ContentManager (Game.Services)
-            {
-                RootDirectory = "Content"
-            };
-        }
 
         public void AddCanvas (Canvas canvas)
         {
