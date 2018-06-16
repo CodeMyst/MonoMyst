@@ -3,6 +3,12 @@ solution: MonoMyst.sln
 mono: latest
 dotnet: 2.1.300
 
+before_install:
+  - sudo apt-get install unzip
+
 script:
   - dotnet restore
   - dotnet build
+
+after_success:
+  - bash ./ReleaseDocs.sh
