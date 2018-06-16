@@ -5,7 +5,7 @@ wget "https://github.com/dotnet/docfx/releases/download/v2.36.2/docfx.zip"
 mkdir docfx
 unzip docfx.zip -d docfx
 
-mono /docfx/docfx.exe ./docs/docfx.json
+mono docfx/docfx.exe ./docs/docfx.json
 
 SOURCE_DIR=$PWD
 TEMP_REPO_DIR=$PWD/../monomyst-gh-pages
