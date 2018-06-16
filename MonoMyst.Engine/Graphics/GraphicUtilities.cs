@@ -16,6 +16,9 @@ namespace MonoMyst.Engine.Graphics
             NotoSansRegular = LoadFromStream<SpriteFont> ("MonoMyst.Engine.Content.NotoSansRegular.xnb", "NotoSansRegular.xnb");
         }
 
+        /// <summary>
+        /// Loads content from the embedded resource files (contained in the dll)
+        /// </summary>
         private T LoadFromStream<T> (string streamName, string assetName)
         {
             T result = default (T);

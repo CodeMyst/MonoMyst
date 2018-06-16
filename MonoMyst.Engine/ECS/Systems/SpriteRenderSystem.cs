@@ -8,6 +8,9 @@ using MonoMyst.Engine.ECS.Components;
 
 namespace MonoMyst.Engine.ECS.Systems
 {
+    /// <summary>
+    /// Renders a sprite on entities that have <see cref="TransformComponent" /> and <see cref="SpriteComponent" />.
+    /// </summary>
     public class SpriteRenderSystem : ComponentSystem
     {
         public SpriteRenderSystem (EntityPool entities)

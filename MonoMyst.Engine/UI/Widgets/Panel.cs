@@ -6,6 +6,9 @@ using MonoMyst.Engine.Graphics;
 
 namespace MonoMyst.Engine.UI.Widgets
 {
+    /// <summary>
+    /// Simple rectangle sprite
+    /// </summary>
     public class Panel : Widget
     {
         internal protected override void Update (float deltaTime)

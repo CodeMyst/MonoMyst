@@ -4,6 +4,9 @@
 
 namespace MonoMyst.Engine.ECS
 {
+    /// <summary>
+    /// Dummy interface used for intentifying components.
+    /// </summary>
     public interface IComponent
     {
         

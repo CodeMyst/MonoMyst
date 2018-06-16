@@ -11,12 +11,18 @@ using MonoMyst.Engine.UI;
 
 namespace MonoMyst.Engine.ECS
 {
+    /// <summary>
+    /// Holds all the entities. You can do additional logic from here.
+    /// </summary>
     public class Scene : MObject
     {
         public EntityPool Entities { get; private set; } = new EntityPool ();
 
         public List<ComponentSystem> Systems { get; } = new List<ComponentSystem> ();
 
+        /// <summary>
+        /// The color with which the screen will be cleared.
+        /// </summary>
         public Color ClearColor { get; set; } = MColors.Nero;
 
         protected UIHost UI { get; set; }
@@ -42,6 +48,9 @@ namespace MonoMyst.Engine.ECS
             UI.Draw (spriteBatch);
         }
 
+        /// <summary>
+        /// Adds an entity to this scene's <see cref="EntityPool" />
+        /// </summary>
         internal void RegisterEntity (Entity entity)
         {
             Entities.Add (entity);

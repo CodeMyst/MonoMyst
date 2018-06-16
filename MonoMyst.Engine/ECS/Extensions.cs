@@ -8,6 +8,9 @@ namespace MonoMyst.Engine.ECS
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Checks if a type is assignable from <see cref="IComponent" />
+        /// </summary>
         public static bool IsComponent (this Type type) => typeof (IComponent).IsAssignableFrom (type);
     }
 }

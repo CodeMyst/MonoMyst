@@ -8,12 +8,21 @@ using System.Collections.Generic;
 
 namespace MonoMyst.Engine.ECS
 {
+    /// <summary>
+    /// Data container which holds a list of entities.
+    /// </summary>
     public class Entity
     {
+        /// <summary>
+        /// Entity's name, doesn't serve any purpose yet.
+        /// </summary>
         public string Name { get; }
 
         private List<IComponent> components = new List<IComponent> ();
 
+        /// <summary>
+        /// The <see cref="EntityPool" /> this entity is a part of.
+        /// </summary>
         public EntityPool OwnerPool { get; }
 
         public Entity (string name)
@@ -23,6 +32,9 @@ namespace MonoMyst.Engine.ECS
             MGame.CurrentScene.RegisterEntity (this);
         }
 
+        /// <summary>
+        /// Adds a component to this entity.
+        /// </summary>
         public T AddComponent<T>() where T : IComponent, new()
         {
             T component = new T ();
@@ -31,6 +43,10 @@ namespace MonoMyst.Engine.ECS
             return component;
         }
 
+        /// <summary>
+        /// Checks if this entity has a specified component.
+        /// </summary>
+        /// <param name="type">Type of the component</param>
         public bool HasComponent (Type type)
         {
             if (!type.IsComponent ())
@@ -42,6 +58,10 @@ namespace MonoMyst.Engine.ECS
             return false;
         }
 
+        /// <summary>
+        /// Checks if this entity has all of the specified component types.
+        /// </summary>
+        /// <param name="compatibleTypes">List of component types to be checked</param>
         public bool HasComponents (IEnumerable<Type> compatibleTypes)
         {
             foreach (Type t in compatibleTypes)
@@ -51,6 +71,10 @@ namespace MonoMyst.Engine.ECS
             return true;
         }
 
-        public T GetComponent<T> () where T : IComponent => (T) components.First (c => c.GetType () == typeof (T));
+        /// <summary>
+        /// Finds the first component of specified type on this entity.
+        /// </summary>
+        /// <returns>Returns null if it couldn't find a component</returns>
+        public T GetComponent<T> () where T : IComponent => (T) components.FirstOrDefault (c => c.GetType () == typeof (T));
     }
 }
