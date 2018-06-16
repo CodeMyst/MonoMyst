@@ -15,7 +15,7 @@ rm -rf $TEMP_REPO_DIR
 mkdir $TEMP_REPO_DIR
 
 echo "Cloning the repo with the gh-pages branch"
-git clone git@github.com:CodeMyst/MonoMyst.git --branch gh-pages $TEMP_REPO_DIR
+git clone https://github.com/CodeMyst/MonoMyst.git --branch gh-pages $TEMP_REPO_DIR
 
 echo "Clear repo directory"
 cd $TEMP_REPO_DIR
