@@ -9,18 +9,21 @@ using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.UI.Widgets;
 using MonoMyst.Engine.ECS.Systems;
 using MonoMyst.Engine.ECS.Components;
+using Microsoft.Xna.Framework.Input;
 
 namespace MonoMyst.Sandbox
 {
     public class MainScene : Scene
     {
+        Entity dino;
+
         protected override void Initialize ()
         {
             base.Initialize ();
 
             SpriteRenderSystem spriteRenderSystem = new SpriteRenderSystem (Entities);
             
-            Entity dino = new Entity ("Dino");
+            dino = new Entity ("Dino");
 
             TransformComponent transform = dino.AddComponent<TransformComponent> ();
             transform.Position = new Vector2 (100, 400);
@@ -29,7 +32,7 @@ namespace MonoMyst.Sandbox
             sprite.Sprite = Game1.GraphicUtilities.Rectangle;
             sprite.Color = MColors.Mystge;
             sprite.Size = new Vector2 (50, 50);
-        
+
             Canvas canvas = new Canvas ();
 
             TextBlock text = new TextBlock
@@ -41,6 +44,14 @@ namespace MonoMyst.Sandbox
             canvas.AddChild (text);
 
             UI.AddCanvas (canvas);
+        }
+
+        protected override void Update (float deltaTime)
+        {
+            if (Keyboard.GetState ().IsKeyDown (Keys.Space))
+            {
+                dino.RemoveComponent<SpriteComponent> ();
+            }
         }
     }
 }

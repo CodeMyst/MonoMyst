@@ -44,6 +44,19 @@ namespace MonoMyst.Engine.ECS
         }
 
         /// <summary>
+        /// Removes the first component of type T
+        /// </summary>
+        public void RemoveComponent<T> () where T : IComponent
+        {
+            T c = (T) components.FirstOrDefault (a => a.GetType () == typeof (T));
+            if (c != null)
+            {
+                components.Remove (c);
+                OwnerPool.InvokeComponentRemoved (this);
+            }
+        }
+
+        /// <summary>
         /// Checks if this entity has a specified component.
         /// </summary>
         /// <param name="type">Type of the component</param>

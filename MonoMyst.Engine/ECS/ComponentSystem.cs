@@ -31,7 +31,10 @@ namespace MonoMyst.Engine.ECS
             compatibleTypes.AddRange (types);
 
             entities.OnEntityAdded += EntitiesChanged;
+            entities.OnEntityRemoved += EntitiesChanged;
+
             entities.OnEntityComponentAdded += EntitiesChanged;
+            entities.OnEntityComponentRemoved += EntitiesChanged;
 
             Entities = new List<Entity> ();
             Entities.AddRange (GetCompatibleEntities (entities));
