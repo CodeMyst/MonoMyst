@@ -51,9 +51,19 @@ namespace MonoMyst.Engine.ECS
             T c = (T) components.FirstOrDefault (a => a.GetType () == typeof (T));
             if (c != null)
             {
-                components.Remove (c);
+                RemoveComponent (c);
                 OwnerPool.InvokeComponentRemoved (this);
             }
+        }
+
+        /// <summary>
+        /// Removes the component by instance
+        /// </summary>
+        /// <param name="component">Instance of the component to remove</param>
+        public void RemoveComponent (IComponent component)
+        {
+            components.Remove (component);
+            OwnerPool.InvokeComponentRemoved (this);
         }
 
         /// <summary>
@@ -89,5 +99,15 @@ namespace MonoMyst.Engine.ECS
         /// </summary>
         /// <returns>Returns null if it couldn't find a component</returns>
         public T GetComponent<T> () where T : IComponent => (T) components.FirstOrDefault (c => c.GetType () == typeof (T));
+
+        /// <summary>
+        /// Destroys the entity.
+        /// </summary>
+        public void Destroy ()
+        {
+            components.Clear ();
+
+            OwnerPool.Remove (this);
+        }
     }
 }

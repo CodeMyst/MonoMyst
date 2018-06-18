@@ -49,9 +49,7 @@ namespace MonoMyst.Sandbox
         protected override void Update (float deltaTime)
         {
             if (Keyboard.GetState ().IsKeyDown (Keys.Space))
-            {
-                dino.RemoveComponent<SpriteComponent> ();
-            }
+                dino.Destroy ();
         }
     }
 }

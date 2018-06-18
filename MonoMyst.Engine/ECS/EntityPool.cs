@@ -49,6 +49,14 @@ namespace MonoMyst.Engine.ECS
             OnEntityAdded?.Invoke (this, entity);
         }
 
+        public void Remove (Entity entity)
+        {
+            entities.Remove (entity);
+            OnEntityRemoved?.Invoke (this, null);
+        }
+
+        // TODO: I don't like the way I made the methods InvokeComponentAdded, InvokeComponentRemoved...
+
         /// <summary>
         /// Invokes the <see cref="OnEntityComponentAdded" /> event. Used internally because you can't invoke an event from other classes.
         /// </summary>
