@@ -101,6 +101,21 @@ namespace MonoMyst.Engine.ECS
         public T GetComponent<T> () where T : IComponent => (T) components.FirstOrDefault (c => c.GetType () == typeof (T));
 
         /// <summary>
+        /// Finds all components for specified type on this entity.
+        /// </summary>
+        public IEnumerable<T> GetComponents<T> () where T : IComponent
+        {
+            IComponent [] cs = (IComponent []) components.FindAll (c => c.GetType () == typeof (T)).ToArray ();
+        
+            List<T> result = new List<T> ();
+
+            foreach (IComponent c in cs)
+                result.Add ((T) c);
+
+            return result;
+        }
+
+        /// <summary>
         /// Destroys the entity.
         /// </summary>
         public void Destroy ()

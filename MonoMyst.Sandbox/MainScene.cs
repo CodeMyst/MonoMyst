@@ -17,6 +17,9 @@ namespace MonoMyst.Sandbox
     {
         Entity dino;
 
+        private KeyboardState currentKeyboardState;
+        private KeyboardState previousKeyboardState;
+
         protected override void Initialize ()
         {
             base.Initialize ();
@@ -33,6 +36,11 @@ namespace MonoMyst.Sandbox
             sprite.Color = MColors.Mystge;
             sprite.Size = new Vector2 (50, 50);
 
+            SpriteComponent sprite2 = dino.AddComponent<SpriteComponent>();
+            sprite2.Sprite = Game1.GraphicUtilities.Rectangle;
+            sprite2.Color = Color.White;
+            sprite2.Size = new Vector2(50, 50);
+
             Canvas canvas = new Canvas ();
 
             TextBlock text = new TextBlock
@@ -48,8 +56,17 @@ namespace MonoMyst.Sandbox
 
         protected override void Update (float deltaTime)
         {
-            if (Keyboard.GetState ().IsKeyDown (Keys.Space))
-                dino.Destroy ();
+            currentKeyboardState = Keyboard.GetState ();
+
+            if (currentKeyboardState.IsKeyDown (Keys.Space) && !previousKeyboardState.IsKeyDown (Keys.Space))
+            {
+                foreach (SpriteComponent c in dino.GetComponents<SpriteComponent> ())
+                {
+                    System.Console.WriteLine(c.Color);
+                }
+            }
+
+            previousKeyboardState = currentKeyboardState;
         }
     }
 }
