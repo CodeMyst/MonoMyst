@@ -17,6 +17,8 @@ namespace MonoMyst.Engine.ECS
     {
         private List<Type> compatibleTypes;
 
+        protected List<Type> CompatibleTypes => compatibleTypes;
+
         /// <summary>
         /// All entities filtered by the compatible components.
         /// </summary>
@@ -57,7 +59,7 @@ namespace MonoMyst.Engine.ECS
         /// <summary>
         /// When entities get changed refresh the entities list again.
         /// </summary>
-        private void EntitiesChanged (EntityPool entities, Entity entity)
+        protected virtual void EntitiesChanged (EntityPool entities, Entity entity)
         {
             Entities.Clear ();
             Entities.AddRange (GetCompatibleEntities (entities));

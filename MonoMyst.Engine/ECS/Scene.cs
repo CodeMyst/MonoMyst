@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine.UI;
@@ -26,6 +27,13 @@ namespace MonoMyst.Engine.ECS
         public Color ClearColor { get; set; } = MColors.Nero;
 
         protected UIHost UI { get; set; }
+
+        protected ContentManager Content { get; }
+
+        public Scene (MGame game)
+        {
+            Content = new ContentManager (game.Services, "Content");
+        }
 
         protected internal override void Initialize ()
         {

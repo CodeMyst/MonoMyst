@@ -64,7 +64,7 @@ namespace MonoMyst.Engine
         {
             GraphicsDevice.Clear (CurrentScene.ClearColor);
 
-            spriteBatch.Begin (transformMatrix: Camera.Transform);
+            spriteBatch.Begin (transformMatrix: Camera.Transform, samplerState: SamplerState.PointClamp);
 
             CurrentScene.Draw (spriteBatch);
 

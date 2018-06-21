@@ -16,7 +16,7 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
-            var scene = new MainScene ();
+            var scene = new MainScene (this);
             NextScene (scene);
         }
     }

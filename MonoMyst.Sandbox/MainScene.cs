@@ -9,6 +9,7 @@ using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.UI.Widgets;
 using MonoMyst.Engine.ECS.Systems;
 using MonoMyst.Engine.ECS.Components;
+
 using Microsoft.Xna.Framework.Input;
 
 namespace MonoMyst.Sandbox
@@ -19,6 +20,8 @@ namespace MonoMyst.Sandbox
 
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
+
+        public MainScene (MGame game) : base (game) { }
 
         protected override void Initialize ()
         {
