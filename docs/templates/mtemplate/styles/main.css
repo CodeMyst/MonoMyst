@@ -1,0 +1,107 @@
+body
+{
+    color: #f7f7f7;
+}
+
+#wrapper
+{
+    background: #1d1d1d !important;
+}
+
+a
+{
+    color: #f89922;
+}
+
+a:hover
+{
+    color: #c97b1c;
+}
+
+a:visited
+{
+    color: #f89922;
+}
+
+.footer
+{
+    background: #0f0f0f;
+    border-top: none;
+}
+
+.sideaffix > div.contribution > ul > li > a.contribution-link:hover
+{
+    background-color: transparent;
+}
+
+.navbar-default
+{
+    background: #1d1d1d;
+    border-bottom: none;
+}
+
+.navbar-inverse
+{
+    background: #0f0f0f;
+    border-bottom: none;
+}
+
+.svg
+{
+    width: 40px;
+    height: 50px;
+}
+
+.sidefilter
+{
+    background: #0f0f0f;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidetoc
+{
+    background: #0f0f0f;
+    border: none;
+}
+
+.toc-filter
+{
+    background: #0f0f0f;
+    color: #f7f7f7;
+    border-radius: 0;
+}
+
+.toc-filter > input
+{
+    background: #0f0f0f;
+    color: #f7f7f7;
+    border-radius: 0;
+}
+
+.toc-filter > .filter-icon
+{
+    color: #f7f7f7;
+}
+
+body .toc
+{
+    padding: 0;
+    background-color: transparent;
+}
+
+.toc .nav > li.active > a
+{
+    color: #f89922;
+}
+
+.toc .nav > li.active > a:hover
+{
+    color: #c97b1c;
+}
+
+.toc .nav > li.active > a:visited
+{
+    color: #f89922;
+}
