@@ -1,2 +1,6 @@
-- name: Getting Started With ECS
-  href: ECS/Getting_Started_With_ECS.md
+- name: Tutorals
+  href: index.md
+- name: ECS
+  items:
+    - name: Getting Started With ECS
+      href: ECS/Getting_Started_With_ECS.md
