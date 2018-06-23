@@ -7,7 +7,7 @@ Start with making a scene:
 ```cs
 public class MainScene : Scene
 {
-
+    public MainScene (MGame game) : base (game) { }
 }
 ```
 
@@ -39,6 +39,8 @@ Entities have no functionality on their own.
 ```cs
 public class MainScene : Scene
 {
+    public MainScene (MGame game) : base (game) { }
+
     protected override void Initialize ()
     {
         Entity player = new Entity ("Player");
@@ -106,6 +108,8 @@ Now you have to instatiate the `ComponentSystem`. It doesn't matter if you do it
 ```cs
 public class MainScene : Scene
 {
+    public MainScene (MGame game) : base (game) { }
+
     protected override void Initialize ()
     {
         HealthSystem healthSystem = new HealthSystem (Entities);
