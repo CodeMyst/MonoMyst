@@ -49,7 +49,9 @@ namespace MonoMyst.Sandbox
             TextBlock text = new TextBlock
             {
                 Text = "Text",
-                Color = Color.White
+                Color = Color.White,
+                TextHorizontalAlignment = TextHorizontalAlignment.Center,
+                TextVerticalAlignment = TextVerticalAlignment.Center
             };
 
             canvas.AddChild (text);

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i');
+
 body
 {
     color: #f7f7f7;
@@ -78,6 +80,12 @@ a:visited
     background: #0f0f0f;
     color: #f7f7f7;
     border-radius: 0;
+    border-bottom: #f89922 1px solid;
+}
+
+.toc .nav > li> .expand-stub
+{
+    color: #0f0f0f;
 }
 
 .toc-filter > .filter-icon
@@ -128,6 +136,8 @@ pre
 
 .hljs {
   color: #bababa;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 14px;
 }
 
 .hljs-strong,
@@ -211,4 +221,52 @@ pre
     color: #f7f7f7;
     border: none;
     border-radius: 0;
+}
+
+.toc .nav > li > a
+{
+    color: #f7f7f7;
+}
+
+.toc .nav > li > a:hover
+{
+    color: #f89922;
+}
+
+.btn.focus, .btn:focus, .btn:hover
+{
+    color: #f89922;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .sidenav
+    {
+        background: #0f0f0f;
+    }
+}
+
+article h4
+{
+    border-color: #f7f7f7;
+}
+
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th
+{
+    border: none;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)
+{
+    background: #1d1d1d;
+}
+
+.table-striped>tbody>tr:nth-of-type(even)
+{
+    background: #1d1d1d;
+}
+
+.affix ul > li.active > a, .affix ul > li.active > a:before
+{
+    color: #f89922;
 }
