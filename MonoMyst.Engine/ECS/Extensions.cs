@@ -11,6 +11,6 @@ namespace MonoMyst.Engine.ECS
         /// <summary>
         /// Checks if a type is assignable from <see cref="IComponent" />
         /// </summary>
-        public static bool IsComponent (this Type type) => typeof (IComponent).IsAssignableFrom (type);
+        public static bool IsComponent (this Type type) => typeof (Component).IsAssignableFrom (type) && !type.IsAbstract;
     }
 }

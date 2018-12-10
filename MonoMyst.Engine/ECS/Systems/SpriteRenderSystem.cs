@@ -29,9 +29,14 @@ namespace MonoMyst.Engine.ECS.Systems
                 spriteBatch.Draw
                 (
                     sprite.Sprite,
-                    new Rectangle (transform.Position.ToPoint (), sprite.Size.ToPoint ()),
+                    transform.Position,
                     null,
-                    sprite.Color
+                    Color.White,
+                    0f,
+                    Vector2.Zero,
+                    transform.Size,
+                    SpriteEffects.None,
+                    sprite.LayerDepth
                 );
             }
         } 

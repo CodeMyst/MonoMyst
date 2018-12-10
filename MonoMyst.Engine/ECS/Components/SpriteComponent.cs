@@ -6,10 +6,10 @@ namespace MonoMyst.Engine.ECS.Components
     /// <summary>
     /// Holds data necessary for rendering a sprite.
     /// </summary>
-    public class SpriteComponent : IComponent
+    public class SpriteComponent : Component
     {
         public Texture2D Sprite { get; set; }
-        public Vector2 Size { get; set; }
         public Color Color { get; set; }
+        public float LayerDepth { get; set; }
     }
 }

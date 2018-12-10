@@ -39,6 +39,7 @@ namespace MonoMyst.Engine.UI
 
         public void AddChild (Widget widget)
         {
+            if (widget == this) throw new ArgumentException ("Cannot pass widget as a child to itself.");
             Children.Add (widget);
             widget.SetParent (this);
             widget.Initialize ();

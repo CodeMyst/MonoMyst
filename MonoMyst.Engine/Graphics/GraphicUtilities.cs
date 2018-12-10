@@ -8,11 +8,13 @@ namespace MonoMyst.Engine.Graphics
     public class GraphicUtilities
     {
         public Texture2D Rectangle { get; private set; }
+        public Texture2D Checkmark { get; private set; }
         public SpriteFont NotoSansRegular { get; private set; }
 
         public GraphicUtilities ()
         {
             Rectangle = LoadFromStream<Texture2D> ("MonoMyst.Engine.Content.Rectangle.xnb", "Rectangle.xnb");
+            Checkmark = LoadFromStream<Texture2D> ("MonoMyst.Engine.Content.Checkmark.xnb", "Checkmark.xnb");
             NotoSansRegular = LoadFromStream<SpriteFont> ("MonoMyst.Engine.Content.NotoSansRegular.xnb", "NotoSansRegular.xnb");
         }
 

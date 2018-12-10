@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoMyst.Engine.UI;
 using MonoMyst.Engine.ECS;
 using MonoMyst.Engine.Graphics;
+using MonoMyst.Engine.UI.Widgets;
 
 namespace MonoMyst.Engine
 {
@@ -24,9 +25,17 @@ namespace MonoMyst.Engine
 
         public static GraphicUtilities GraphicUtilities { get; private set; }
 
+        public static GameServiceContainer GameServices { get; private set; }
+
+        public static double FPS { get; set; }
+
+        private Input input;
+
         public MGame ()
         {
             GraphicsDeviceManager = new GraphicsDeviceManager (this);
+
+            GameServices = new GameServiceContainer ();
 
             IsMouseVisible = true;
 
@@ -34,6 +43,8 @@ namespace MonoMyst.Engine
             {
                 Position = Vector2.Zero
             };
+
+            input = new Input ();
         }
 
         protected override void Initialize ()
@@ -49,6 +60,9 @@ namespace MonoMyst.Engine
 
             EmbeddedContent = new XNBContentManager (GraphicsDevice);
             GraphicUtilities = new GraphicUtilities ();
+
+            Content.RootDirectory = "Content";
+            GameServices.AddService<ContentManager> (Content);
         }
 
         protected override void Update (GameTime gameTime)
@@ -57,14 +71,16 @@ namespace MonoMyst.Engine
 
             float deltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
 
+            input.StartState ();
             CurrentScene.Update (deltaTime);
+            input.EndState ();
         }
 
         protected override void Draw (GameTime gameTime)
         {
             GraphicsDevice.Clear (CurrentScene.ClearColor);
 
-            spriteBatch.Begin (transformMatrix: Camera.Transform, samplerState: SamplerState.PointClamp);
+            spriteBatch.Begin (transformMatrix: Camera.Transform, samplerState: SamplerState.AnisotropicWrap, sortMode: SpriteSortMode.FrontToBack);
 
             CurrentScene.Draw (spriteBatch);
 
@@ -73,6 +89,8 @@ namespace MonoMyst.Engine
             spriteBatch.Begin (sortMode: SpriteSortMode.FrontToBack, rasterizerState: rasterizerState);
 
             // UI draw
+
+            FPS = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
             spriteBatch.End ();
 

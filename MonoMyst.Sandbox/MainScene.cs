@@ -37,12 +37,6 @@ namespace MonoMyst.Sandbox
             SpriteComponent sprite = dino.AddComponent<SpriteComponent> ();
             sprite.Sprite = Game1.GraphicUtilities.Rectangle;
             sprite.Color = MColors.Mystge;
-            sprite.Size = new Vector2 (50, 50);
-
-            SpriteComponent sprite2 = dino.AddComponent<SpriteComponent>();
-            sprite2.Sprite = Game1.GraphicUtilities.Rectangle;
-            sprite2.Color = Color.White;
-            sprite2.Size = new Vector2(50, 50);
 
             Canvas canvas = new Canvas ();
 
