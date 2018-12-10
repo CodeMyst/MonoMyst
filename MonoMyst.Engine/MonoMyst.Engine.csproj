@@ -3,6 +3,14 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>MonoMyst</PackageId>
+    <Version>0.0.3</Version>
+    <Authors>CodeMyst</Authors>
+    <Description>Game engine written on top of MonoGame.</Description>
+    <PackageProjectUrl>https://github.com/CodeMyst/MonoMyst</PackageProjectUrl>
+    <PackageIconUrl>https://i.postimg.cc/15NXfzFF/Mono-Myst-Logo64.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/CodeMyst/MonoMyst</RepositoryUrl>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
