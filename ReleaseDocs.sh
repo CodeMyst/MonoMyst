@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-wget "https://github.com/dotnet/docfx/releases/download/v2.36.2/docfx.zip"
+wget "https://github.com/dotnet/docfx/releases/download/v2.40.6/docfx.zip"
 mkdir docfx
 unzip docfx.zip -d docfx
 
