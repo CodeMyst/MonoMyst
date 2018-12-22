@@ -6,4 +6,6 @@ Components:
     Position:
       X: 0.25
       Y: 0.25
+  - Type: SpriteComponent
+    Sprite: MonoMyst/Rectangle
 ...

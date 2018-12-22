@@ -85,9 +85,17 @@ namespace MonoMyst.Engine.ECS
 
         private static void SetTexture2DValue (Component component, PropertyInfo property, YamlNode yamlNode)
         {
+            string spriteName = yamlNode.ToString ();
+
+            // TODO: (#5) Need a better way to handle this
+            if (spriteName == "MonoMyst/Rectangle")
+            {
+                property.SetValue (component, MGame.GraphicUtilities.Rectangle);
+                return;
+            }
+
             ContentManager content = MGame.GameServices.GetService<ContentManager> ();
             
-            string spriteName = yamlNode.ToString ();
             Texture2D res = content.Load<Texture2D> (spriteName);
             property.SetValue (component, res);
         }

@@ -22,6 +22,8 @@ namespace MonoMyst.Sandbox
         {
             base.Initialize ();
 
+            new SpriteRenderSystem (Entities);
+
             Entity e = Premade.Create ("Content/Test.mpm");
         }
     }
