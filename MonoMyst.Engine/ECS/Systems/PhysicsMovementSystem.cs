@@ -29,13 +29,13 @@ namespace MonoMyst.Engine.ECS.Systems
 
                 if (pbody.Velocity.X != 0)
                 {
-                    transform.Position.X += pbody.Velocity.X * dt;
+                    transform.Position = new Vector2 (transform.Position.X + pbody.Velocity.X * dt, transform.Position.Y);
                     HandleHorizontalCollision (e, transform, collider, pbody);
                 }
 
                 if (pbody.Velocity.Y != 0)
                 {
-                    transform.Position.Y += pbody.Velocity.Y * dt;
+                    transform.Position = new Vector2 (transform.Position.X, transform.Position.Y + pbody.Velocity.Y * dt);
                     HandleVerticalCollision (e, transform, collider, pbody);
                 }
             }
@@ -57,7 +57,7 @@ namespace MonoMyst.Engine.ECS.Systems
                 {
                     float d = r.GetIntersectionDepth (or).X * -1;
 
-                    t.Position.X = (float) Math.Round (t.Position.X - d);
+                    t.Position = new Vector2 ((float) Math.Round (t.Position.X - d), t.Position.Y);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace MonoMyst.Engine.ECS.Systems
                 {
                     float d = r.GetIntersectionDepth (or).Y * -1;
 
-                    t.Position.Y = (float) Math.Round (t.Position.Y - d);
+                    t.Position = new Vector2 (t.Position.X, (float) Math.Round (t.Position.Y - d));
 
                     if (Math.Sign (d) >= 0) p.Grounded = true;
                     else p.Grounded = false;
