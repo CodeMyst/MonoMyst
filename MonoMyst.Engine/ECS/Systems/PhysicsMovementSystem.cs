@@ -57,7 +57,7 @@ namespace MonoMyst.Engine.ECS.Systems
                 {
                     float d = r.GetIntersectionDepth (or).X * -1;
 
-                    t.Position = new Vector2 ((float) Math.Round (t.Position.X - d), t.Position.Y);
+                    t.Position = new Vector2 ((float) Math.Floor (t.Position.X - d), t.Position.Y);
                 }
             }
         }
@@ -78,10 +78,7 @@ namespace MonoMyst.Engine.ECS.Systems
                 {
                     float d = r.GetIntersectionDepth (or).Y * -1;
 
-                    t.Position = new Vector2 (t.Position.X, (float) Math.Round (t.Position.Y - d));
-
-                    if (Math.Sign (d) >= 0) p.Grounded = true;
-                    else p.Grounded = false;
+                    t.Position = new Vector2 (t.Position.X, (float) Math.Floor (t.Position.Y - d));
                 }
             }
         }

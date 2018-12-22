@@ -4,8 +4,14 @@ Name: e
 Components:
   - Type: TransformComponent
     Position:
+      X: 50
+      Y: 50
+    Size:
       X: 0.25
       Y: 0.25
-  - Type: SpriteComponent
-    Sprite: MonoMyst/Rectangle
+ 
+  - Type: AABBComponent
+    Width: 30
+    Height: 30
+    DrawDebug: true
 ...
