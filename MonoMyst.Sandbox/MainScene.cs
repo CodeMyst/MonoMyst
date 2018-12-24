@@ -33,7 +33,7 @@ namespace MonoMyst.Sandbox
             e2.GetComponent<TransformComponent> ().Position = new Vector2 (50, 300);
 
             Premade.Create ("Content/Test.mpm").GetComponent<TransformComponent> ().Position = new Vector2 (80, 300);
-            Premade.Create ("Content/Test.mpm").GetComponent<TransformComponent> ().Position = new Vector2 (140, 300);
+            Premade.Create ("Content/Test.mpm").GetComponent<TransformComponent> ().Position = new Vector2 (141, 300);
             Premade.Create ("Content/Test.mpm").GetComponent<TransformComponent> ().Position = new Vector2 (170, 250);
 
             e.AddComponent<PhysicsBodyComponent> ();

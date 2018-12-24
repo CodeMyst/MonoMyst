@@ -5,6 +5,11 @@ wget "https://github.com/dotnet/docfx/releases/download/v2.40.6/docfx.zip"
 mkdir docfx
 unzip docfx.zip -d docfx
 
+cd MonoMyst.Engine/
+dotnet add package SQLitePCLRaw.core --package-directory tmp --version 1.1.12
+cd ..
+cp MonoMyst.Engine/tmp/sqlitepclraw.core/1.1.12/lib/net45/SQLitePCLRaw.core.dll docfx
+
 mono docfx/docfx.exe ./docs/docfx.json
 
 SOURCE_DIR=$PWD
