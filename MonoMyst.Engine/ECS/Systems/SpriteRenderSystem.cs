@@ -31,7 +31,7 @@ namespace MonoMyst.Engine.ECS.Systems
                     sprite.Sprite,
                     transform.Position,
                     null,
-                    Color.White,
+                    sprite.Color,
                     0f,
                     Vector2.Zero,
                     transform.Size,

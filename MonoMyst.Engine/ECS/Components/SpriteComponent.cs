@@ -9,7 +9,7 @@ namespace MonoMyst.Engine.ECS.Components
     public class SpriteComponent : Component
     {
         public Texture2D Sprite { get; set; }
-        public Color Color { get; set; }
+        public Color Color { get; set; } = Color.White;
         public float LayerDepth { get; set; }
     }
 }
