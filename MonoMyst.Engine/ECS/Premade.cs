@@ -57,6 +57,8 @@ namespace MonoMyst.Engine.ECS
                             SetTexture2DValue (entityComponent, componentProperty, property.Value);
                         else if (componentProperty.PropertyType == typeof (Color))
                             SetColorValue (entityComponent, componentProperty, property.Value);
+                        else if (typeof(Enum).IsAssignableFrom(componentProperty.PropertyType))
+                            SetEnumValue(entityComponent, componentProperty, property.Value);
                         else if (componentProperty.PropertyType == typeof (Dictionary<string, Texture2D>))
                             SetStringTexture2DMapValue (entityComponent, componentProperty, (YamlSequenceNode) property.Value);
                         else if (componentProperty.PropertyType.IsPrimitive || componentProperty.PropertyType == typeof (string))
@@ -105,6 +107,12 @@ namespace MonoMyst.Engine.ECS
             PropertyInfo colorInfo = typeof (Color).GetProperty (yamlNode.ToString ());
             Color res = (Color) colorInfo.GetValue (null, null);
             property.SetValue (component, res);
+        }
+
+        private static void SetEnumValue(Component component, PropertyInfo property, YamlNode yamlNode)
+        {
+            object res = Enum.Parse(property.PropertyType, yamlNode.ToString());
+            property.SetValue(component, res);
         }
 
         private static void SetStringTexture2DMapValue (Component component, PropertyInfo property, YamlSequenceNode yamlNode)
