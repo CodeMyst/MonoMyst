@@ -1,7 +1,7 @@
 language: csharp
 solution: MonoMyst.sln
 mono: latest
-dotnet: 2.1.300
+dotnet: latest
 
 before_install:
   - sudo apt-get install unzip
