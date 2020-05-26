@@ -154,8 +154,10 @@ namespace MonoMyst.Engine.ECS
         /// </summary>
         public void Destroy ()
         {
-            foreach (Component c in components)
-                RemoveComponent (c);
+            for (int i = 0; i < components.Count; i++)
+            {
+                RemoveComponent(components[i]);
+            }
 
             OwnerPool.Remove (this);
         }
