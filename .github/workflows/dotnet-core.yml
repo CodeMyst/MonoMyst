@@ -13,23 +13,26 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+
     - name: Install dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
+    - name: Create CNAME
+      if: github.ref == 'refs/heads/master'
+      run: |
+        sudo mkdir -p docs/_site
+        sudo touch docs/_site/CNAME
+        sudo echo mono.myst.rs > docs/_site/CNAME
+        
     - name: Build Docs
       if: github.ref == 'refs/heads/master'
       uses: nikeee/docfx-action@v0.1.0
       with:
         args: docs/docfx.json
-    - name: Create CNAME
-      if: github.ref == 'refs/heads/master'
-      run: |
-        ls
-        ls docs/
-        touch docs/_site/CNAME
-        echo mono.myst.rs > docs/_site/CNAME
+
     - name: Publish gh-pages
       if: github.ref == 'refs/heads/master'
       uses: maxheld83/ghpages@v0.3.0
