@@ -26,12 +26,10 @@ jobs:
     - name: Create CNAME
       if: github.ref == 'refs/heads/master'
       run: |
-        echo mono.myst.rs >> docs/_site/CNAME
+        sudo echo mono.myst.rs >> docs/_site/CNAME
     - name: Publish gh-pages
       if: github.ref == 'refs/heads/master'
       uses: maxheld83/ghpages@v0.3.0
       env:
         BUILD_DIR: docs/_site/
         GH_PAT: ${{ secrets.GH_PAT }}
-    - name: Ref
-      run: echo ${{ github.ref }}
