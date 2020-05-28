@@ -19,13 +19,6 @@ jobs:
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    
-    - name: Create CNAME
-      if: github.ref == 'refs/heads/master'
-      run: |
-        sudo mkdir -p docs/_site
-        sudo touch docs/_site/CNAME
-        sudo echo mono.myst.rs > docs/_site/CNAME
         
     - name: Build Docs
       if: github.ref == 'refs/heads/master'
