@@ -26,8 +26,8 @@ jobs:
     - name: Create CNAME
       if: github.ref == 'refs/heads/master'
       run: |
-        pwd
-        sudo echo mono.myst.rs >> docs/_site/CNAME
+        touch docs/_site/CNAME
+        echo mono.myst.rs > docs/_site/CNAME
     - name: Publish gh-pages
       if: github.ref == 'refs/heads/master'
       uses: maxheld83/ghpages@v0.3.0
