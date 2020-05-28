@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting Started With ECS </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting Started With ECS ">
+    <meta name="generator" content="docfx 2.45.1.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started-with-ecs">Getting Started With ECS</h1>
+
+<h2 id="creating-a-scene">Creating a scene</h2>
+<p>Start with making a scene:</p>
+<pre><code class="lang-cs">public class MainScene : Scene
+{
+    public MainScene (MGame game) : base (game) { }
+}
+</code></pre>
+<p>To switch to this scene, in your <code>Game</code> class create a new instance of this scene:</p>
+<pre><code class="lang-cs">public class Game1 : MGame
+{
+    public Game1 () : base ()
+    {
+    }
+
+    protected override void Initialize ()
+    {
+        base.Initialize ();
+
+        Scene mainScene = new MainScene ();
+        NextScene (mainScene);
+    }
+}
+</code></pre>
+<h2 id="creating-entities">Creating entities</h2>
+<p>Entities are just a collection of components attached to a scene.</p>
+<p>Entities have no functionality on their own.</p>
+<pre><code class="lang-cs">public class MainScene : Scene
+{
+    public MainScene (MGame game) : base (game) { }
+
+    protected override void Initialize ()
+    {
+        Entity player = new Entity (&quot;Player&quot;);
+    }
+}
+</code></pre>
+<h2 id="components">Components</h2>
+<p>Components are simply data containers, they implement no logic whatsoever.</p>
+<pre><code class="lang-cs">public class HealthComponent : IComponent
+{
+    public float MaxHealth { get; set; }
+    public float CurrentHealth { get; set; }
+}
+</code></pre>
+<p>To attach components to entities:</p>
+<pre><code class="lang-cs">Entity player = new Entity (&quot;Player&quot;);
+
+player.AddComponent&lt;HealthComponent&gt; ();
+</code></pre>
+<h2 id="systems">Systems</h2>
+<p>Since components are only data containers, you have to use Systems which have a list of all entities with compatible components through which you can loop and do logic.</p>
+<pre><code class="lang-cs">public class HealthSystem : ComponentSystem
+{
+    public HealthSystem (EntityPool entities)
+        : base (entities, typeof (HealthComponent))
+    {
+    }
+
+    protected override void Update (float deltaTime)
+    {
+        foreach (Entity e in Entities)
+        {
+            HealthComponent health = e.GetComponent&lt;HealthComponent&gt; ();
+
+            // Logic...
+        }
+    }
+}
+</code></pre>
+<p>You can also specify multiple component types, entities which have components of all those types will only be added to the <code>ComponentSystem</code>'s <code>Entities</code> list.</p>
+<pre><code class="lang-cs">public SomeSystem (EntityPool entities)
+    : base (entities, typeof (OneComponent),
+                      typeof (TwoComponent),
+                      typeof (ThreeComponent))
+{
+}
+</code></pre>
+<p>Now you have to instatiate the <code>ComponentSystem</code>. It doesn't matter if you do it after or before adding entities since the system will be notified of all the changes on any of the entities.</p>
+<pre><code class="lang-cs">public class MainScene : Scene
+{
+    public MainScene (MGame game) : base (game) { }
+
+    protected override void Initialize ()
+    {
+        HealthSystem healthSystem = new HealthSystem (Entities);
+
+        Entity player = new Entity (&quot;Player&quot;);
+        player.AddComponent&lt;HealthComponent&gt; ();
+    }
+}
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2018 <strong>CodeMyst</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
